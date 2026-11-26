@@ -1,0 +1,496 @@
+TEST `x` ${y} \s<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FikirList Mediakit</title>
+<meta name="description" content="FikirList — Hər şeydən bir fikir. Tarix, mədəniyyət, psixologiya, elm və müasir trendlər haqqında qısa, kinematik hekayələr.">
+<meta name="theme-color" content="#0b0b0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b0a'/%3E%3Cg transform='translate(10 11) scale(.106)'%3E%3Cpath fill='%23fff' d='M16 4H82V31H35V56H74V83H35V188H4V81H33V58H4V17L8 9ZM98 4H128V31H98ZM98 55H128V188H98ZM143 4H175V60H264V86H194L264 184V188H231L175 109V188H143ZM279 4H310V31H279ZM279 55H310V188H279ZM353 55H410V85H356V188H325V83H353ZM98 210H128V366H158V394H98ZM173 210H204V237H173ZM173 261H204V394H173ZM249 276H322V302H256L250 308V317L254 321H287Q320 321 322 352V368Q322 394 291 394H220V368H286L291 363V353L287 348H243Q223 347 220 325V302Q220 276 249 276ZM338 210H368V261H408V289H368V366H409V394H337Z'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FikirList — Hər şeydən bir fikir">
+<meta property="og:description" content="Tarix, mədəniyyət, psixologiya, elm və müasir trendlər haqqında qısa, kinematik hekayələr. Mediakit və əməkdaşlıq.">
+<meta property="og:image" content="https://fikirlist.github.io/mediakit/og.jpg">
+<meta property="og:url" content="https://fikirlist.github.io/mediakit/">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE  premium, quiet, cinematic: a film studio's partner sheet
+   IDEA   a darkened screening room; the yellow subtitle is the only light
+   PICTURE a Reel frame with an archival halftone portrait and a typed yellow subtitle
+   COLOUR near-black ground, warm off-white ink, FikirList subtitle yellow as the one accent
+   TYPE   Inter Tight 600 display + Inter text
+   LAYOUT slogan hero left + Reel right, full-width figure strip; phone: slogan, Reel, figures */
+:root{color-scheme:dark;--bg:#0b0b0a;--s1:#131311;--s2:#1a1a17;--line:rgba(244,241,234,.09);--line2:rgba(244,241,234,.16);--ink:#f4f1ea;--soft:#a39f96;--mute:#6f6b64;--y:#ffd21f;--red:#e0301e;--ig:#e4405f;--tt:#25f4ee;--yt:#ff2d2d}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;font-weight:600;letter-spacing:-.035em;line-height:1.02;margin:0}
+h2{font-size:clamp(30px,3.6vw,46px);text-wrap:balance}
+h3{font-size:19px;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(5vw,18px);padding-right:max(5vw,18px)}
+.sec{padding-block:clamp(56px,8vw,112px);border-top:1px solid var(--line)}
+.notice{background:var(--y);color:#111;font-size:14px;padding:9px 18px;text-align:center;font-weight:500}
+nav{position:sticky;top:0;z-index:40;background:rgba(11,11,10,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand span{padding-left:14px;border-left:1px solid var(--line2)}
+.brand svg{height:21px;width:auto;fill:var(--ink);display:block;transform:translateY(2px)}
+.brand:hover svg{fill:var(--y)}
+.mark{display:block;width:72px;height:auto;fill:var(--ink);margin:0 auto 40px}
+.brand span{font-size:13px;color:var(--soft)}
+.acts{display:flex;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;font:600 15px Inter,sans-serif;text-decoration:none;cursor:pointer;border:1px solid var(--line2);background:transparent;color:var(--ink);transition:background .2s,border-color .2s}
+.btn:hover{border-color:var(--ink)}
+.btn.pri{background:var(--y);border-color:var(--y);color:#111}
+.btn.pri:hover{background:#ffe066}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--y);outline-offset:3px}
+.hero{position:relative;padding-block:clamp(48px,7vw,96px) clamp(40px,5vw,72px);overflow:hidden}
+.hero::after{content:"";position:absolute;right:-10%;top:5%;width:60%;height:90%;background:radial-gradient(closest-side,rgba(255,210,31,.13),transparent);pointer-events:none}
+.hgrid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:clamp(32px,5vw,80px);align-items:center}
+.hero h1{font-size:clamp(56px,9vw,124px);letter-spacing:-.05em;line-height:.92}
+.hero h1 em{font-style:normal;color:var(--y)}
+.lede{font-size:clamp(17px,1.5vw,19px);color:#d6d2c9;max-width:46ch;margin:28px 0 32px;line-height:1.6}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.reel{justify-self:center;width:min(100%,320px);aspect-ratio:9/16;border-radius:34px;padding:7px;background:linear-gradient(160deg,#3a3a36,#121210 40%,#2a2a26);box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.06)}
+
+.sub{font:600 17px "Inter Tight",sans-serif;fill:var(--y)}
+.screen{position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;background:#16120e}
+.screen .base{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:-2%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.1s ease;will-change:transform,opacity}
+.slide.on{opacity:1;animation:kb 6.5s ease-out both}
+.slide:nth-child(even).on{animation-name:kb2}
+@keyframes kb{from{transform:scale(1.06) translate(1%,1%)}to{transform:scale(1.2) translate(-2%,-3%)}}
+@keyframes kb2{from{transform:scale(1.2) translate(-2%,0)}to{transform:scale(1.06) translate(1%,-1%)}}
+.has-slides .base .sub{display:none}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent 18%,transparent 52%,rgba(0,0,0,.82));pointer-events:none}
+.segs{position:absolute;left:14px;right:14px;top:14px;display:flex;gap:4px}
+.segs i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden}
+.segs b{display:block;height:100%;width:0;background:#fff}
+.segs i.done b{width:100%}
+.segs i.on b{animation:seg var(--dur,5s) linear forwards}
+@keyframes seg{to{width:100%}}
+.rlogo{position:absolute;left:16px;top:28px;height:14px;width:auto;fill:#fff;opacity:.95}
+.side{position:absolute;right:12px;bottom:34%;display:grid;gap:18px}
+.side svg{width:24px;height:24px;fill:#fff;opacity:.92;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))}
+.cap{position:absolute;left:16px;right:52px;bottom:12%;text-align:center;font:700 17px/1.3 "Inter Tight",sans-serif;color:var(--y);text-shadow:0 2px 10px rgba(0,0,0,.7);text-wrap:balance}
+.cap span{display:inline-block;opacity:0;transform:translateY(8px) scale(.96);animation:wd .45s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes wd{to{opacity:1;transform:none}}
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker div{display:flex;gap:40px;width:max-content;animation:tk 60s linear infinite}
+.ticker span{font:500 15px "Inter Tight",sans-serif;color:var(--soft);white-space:nowrap;display:flex;align-items:center;gap:40px}
+.ticker span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--y)}
+.ticker:hover div{animation-play-state:paused}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+.w{opacity:0;animation:pop 7s infinite}
+@keyframes pop{0%,3%{opacity:0}7%,88%{opacity:1}95%,100%{opacity:0}}
+.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);margin-top:clamp(40px,6vw,72px);position:relative;z-index:1}
+.fig{padding:26px 22px 24px;border-left:1px solid var(--line)}
+.fig:first-child{border-left:0;padding-left:0}
+.fig b{display:block;font:600 clamp(36px,4.6vw,60px)/1 "Inter Tight",sans-serif;letter-spacing:-.045em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fig span{display:block;margin-top:10px;font-size:14px;color:var(--soft)}
+.upd{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;color:var(--soft);position:relative;z-index:1}
+.live{width:7px;height:7px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.15)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:40px}
+.head p{margin:0;color:var(--soft);max-width:48ch}
+.share{margin-bottom:20px}
+.share-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:3px}
+.share-bar i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;font-size:14px;color:var(--soft)}
+.legend b{color:var(--ink);font-weight:600;margin-left:4px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.plats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.plat{background:linear-gradient(180deg,var(--s2),var(--s1));border:1px solid var(--line);border-radius:22px;padding:24px;position:relative;overflow:hidden}
+.plat::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--c),transparent);opacity:.7}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pn{display:flex;align-items:center;gap:10px;font:600 17px "Inter Tight",sans-serif}
+.pn svg{width:22px;height:22px;color:var(--c)}
+.ph a{font-size:13px;color:var(--soft);text-decoration:none;border-bottom:1px solid var(--line2)}
+.ph a:hover{color:var(--ink)}
+.pbig{font:600 clamp(40px,4.4vw,54px)/1 "Inter Tight",sans-serif;letter-spacing:-.045em;margin:28px 0 4px;white-space:nowrap}
+.plab{font-size:14px;color:var(--soft)}
+.mets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
+.met{background:var(--s1);padding:14px}
+.met b{display:block;font:600 20px "Inter Tight",sans-serif;letter-spacing:-.02em;white-space:nowrap}
+.met span{font-size:13px;color:var(--soft)}
+.aud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:24px}
+.bars{display:grid;gap:12px;margin-top:20px}
+.bar{display:grid;grid-template-columns:5em minmax(0,1fr) 3.4em;gap:12px;align-items:center;font-size:14px}
+.bar span:first-child{color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{height:8px;background:rgba(244,241,234,.07);border-radius:4px;overflow:hidden}
+.track i{display:block;height:100%;border-radius:4px;background:rgba(244,241,234,.55)}
+.bar.lead .track i{background:var(--y)}
+.bar em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gbig{display:flex;justify-content:space-between;margin-top:20px}
+.gbig b{display:block;font:600 40px/1 "Inter Tight",sans-serif;letter-spacing:-.04em}
+.gbig span{font-size:14px;color:var(--soft)}
+.gbig div:last-child{text-align:right}
+.gbar{display:flex;height:8px;border-radius:4px;overflow:hidden;gap:3px;margin-top:16px}
+.src{font-size:13px;color:var(--mute);margin-top:20px}
+.empty{color:var(--mute);font-size:14px;margin-top:18px}
+.tops{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tops li{display:grid;grid-template-columns:3rem minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.rank{font:600 15px "Inter Tight",sans-serif;color:var(--mute);font-variant-numeric:tabular-nums}
+.tops a,.tops .tt{font:500 18px "Inter Tight",sans-serif;letter-spacing:-.01em;text-decoration:none}
+.tops a:hover{color:var(--y)}
+.chip{display:inline-block;margin-left:10px;font:500 12px Inter,sans-serif;color:var(--soft);border:1px solid var(--line2);border-radius:999px;padding:2px 9px;vertical-align:3px}
+.tops em{font:600 20px "Inter Tight",sans-serif;font-style:normal;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ser{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:24px;padding:28px 28px 30px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 20px;align-items:start;transition:border-color .25s,transform .25s}
+.ser:hover{border-color:var(--line2);transform:translateY(-2px)}
+.ser:first-child{background:linear-gradient(150deg,rgba(255,210,31,.11),var(--s1) 60%);border-color:rgba(255,210,31,.28)}
+.ser svg{grid-row:span 3;width:30px;height:30px;color:var(--y);padding:13px;border-radius:16px;background:rgba(255,210,31,.08);border:1px solid rgba(255,210,31,.18);box-sizing:content-box}
+.ser h3{font-size:23px;letter-spacing:-.03em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ser p{color:var(--soft);font-size:16px;margin:8px 0 0;line-height:1.65;max-width:52ch}
+.ser .tag{font:600 12px Inter,sans-serif;color:#111;background:var(--y);border-radius:999px;padding:3px 10px;letter-spacing:0}
+.fmts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.fmt{padding:28px 32px 28px 0;border-bottom:1px solid var(--line)}
+.fmt:nth-child(2n){padding-left:32px;padding-right:0;border-left:1px solid var(--line)}
+.fmt p{color:var(--soft);margin:10px 0 0;max-width:44ch}
+.principle{margin-top:28px;color:var(--soft);font-size:15px;max-width:70ch}
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.mem{display:flex;gap:18px;align-items:center}
+.av{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font:600 22px "Inter Tight",sans-serif;background:var(--s2);border:1px solid var(--line2);color:var(--y)}
+.mem p{margin:4px 0 0;color:var(--soft);font-size:15px}
+.mem .role{color:var(--ink);font-size:14px;margin-top:2px}
+footer{padding-block:clamp(72px,10vw,140px) 40px;border-top:1px solid var(--line);position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:80%;height:70%;background:radial-gradient(closest-side,rgba(255,210,31,.1),transparent);pointer-events:none}
+.close{position:relative;text-align:center}
+.close .big{font:600 clamp(48px,8vw,108px)/.95 "Inter Tight",sans-serif;letter-spacing:-.05em}
+.close .big em{font-style:normal;color:var(--y)}
+.close p{color:var(--soft);max-width:48ch;margin:24px auto 32px}
+.close .cta{justify-content:center}
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:640px;margin:0 auto;text-align:left}
+.cbox{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:var(--s1);border:1px solid var(--line2);text-decoration:none;transition:border-color .2s,background .2s}
+.cbox:hover{border-color:var(--y);background:var(--s2)}
+.cbox small{display:block;font-size:13px;color:var(--soft)}
+.cbox b{display:block;font:600 16px "Inter Tight",sans-serif;letter-spacing:-.01em;overflow-wrap:anywhere}
+.cic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--y);color:#111}
+.cic svg{width:22px;height:22px}
+.cic.ig{background:linear-gradient(45deg,#f9a825,#e4405f 50%,#8e3ccb);color:#fff}
+.copy{margin-top:14px;background:none;border:0;color:var(--soft);font:500 14px Inter,sans-serif;cursor:pointer;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.copy:hover{color:var(--ink)}
+@media(max-width:600px){.contact{grid-template-columns:minmax(0,1fr)}}
+.socials{display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.socials a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-size:14px;color:var(--soft)}
+.socials a:hover{color:var(--ink);border-color:var(--line2)}
+.socials svg{width:16px;height:16px}
+.fine{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:72px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--mute);position:relative}
+.loading{min-height:60vh;display:grid;place-items:center;color:var(--soft)}
+@media(prefers-reduced-motion:reduce){.w{animation:none;opacity:1}.slide.on,.ticker div,.segs i.on b{animation:none}.segs i.on b{width:100%}.cap span{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+@media(max-width:980px){.plats,.aud{grid-template-columns:minmax(0,1fr)}.sers{grid-template-columns:minmax(0,1fr)}.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.fig:nth-child(3){border-left:0;padding-left:0}.fig:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(max-width:760px){.hgrid{grid-template-columns:minmax(0,1fr)}.reel{width:min(64vw,270px)}.head{grid-template-columns:minmax(0,1fr)}.fmts,.team{grid-template-columns:minmax(0,1fr)}.fmt,.fmt:nth-child(2n){padding:22px 0;border-left:0}.brand span{display:none}}
+@media(max-width:520px){.reel{width:min(56vw,220px);border-radius:28px}.screen{border-radius:22px}.ser{grid-template-columns:minmax(0,1fr);padding:22px}.ser svg{grid-row:auto;margin-bottom:12px}.ser h3{font-size:21px}.acts .btn:not(.pri){display:none}.tops li{grid-template-columns:2rem minmax(0,1fr) auto;gap:10px}.tops a,.tops .tt{font-size:16px}.chip{display:none}.fig{padding:20px 14px}.fig:nth-child(odd){padding-left:0}}
+@media print{nav,.notice,.cta,body::before{display:none}.sec{padding-block:28px}.plat,.card,.ser{break-inside:avoid}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div id="app"><div class="loading">Məlumatlar yüklənir…</div></div>
+
+<script>
+{
+/* ================= AYARLAR =================
+   SHEET_ID: Google Sheets linkindəki /d/ ilə /edit arasındakı hissə.
+   Boş qalsa, səhifə nümunə rəqəmlərlə açılır.                        */
+const SHEET_ID = "1XGlQF8-AbdiYyirOEeaTsF0UGlYr7MsfI30LYRDNF5E";
+const SHEET_NAME = "MediaKit";
+
+/* Saytda sabit qalan mətnlər */
+const STATIC = {
+  slogan: "Hər şeydən bir fikir",
+  email: "fikirlistmedia@gmail.com",
+  igDM: "https://ig.me/m/fikirlist",
+  bio: "Tarix, mədəniyyət, psixologiya, elm və müasir trendləri qısa, vizual və kinematik hekayələrlə təqdim edirik. Məqsədimiz sadəcə məlumat vermək deyil, hər hekayə ilə yeni bir maraq oyatmaq və fərqli düşüncə bucağı yaratmaqdır.",
+  platforms: [
+    { id:"ig", name:"Instagram", c:"var(--ig)", handle:"@fikirlist", url:"https://www.instagram.com/fikirlist/", unit:"izləyici" },
+    { id:"tt", name:"TikTok", c:"var(--tt)", handle:"@fikirlist", url:"https://www.tiktok.com/@fikirlist", unit:"izləyici" },
+    { id:"yt", name:"YouTube", c:"var(--yt)", handle:"@fikirlistchannel", url:"https://www.youtube.com/@fikirlistchannel", unit:"abunəçi" }
+  ],
+  series: [
+    ["ESKİZ","Hamının tanıdığı, amma hekayəsini az adamın bildiyi insanlar. Bir fotodan, bir xatirədən və ya bir-birinə zidd iki hekayədən başlayıb onların portretini çəkirik. Arxiv sənədlərinə və etibarlı mənbələrə söykənərək bir ömrü bir dəqiqəlik kino dilində danışırıq.","eskiz","Ən çox izlənən"],
+    ["Biz Kimik?","Eyni sözü fərqli deyir, eyni bayramı fərqli keçiririk. Azərbaycanın xalqları və icmaları öz dili, adətləri və gündəlik həyatı ilə. Məqsədimiz fərqləri qabartmaq yox, bir-birimizi daha yaxından tanımaqdır. Animasiya dili isə mövzunu hər yaşdan izləyici üçün səmimi edir. Talışlar və yerazlarla başladıq.","globe","Animasiya"],
+    ["Psixologiya və həyat fəlsəfəsi","Kintsugidən dolce far nienteyə qədər, başqa mədəniyyətlərin daha yaxşı yaşamaq haqqında tapdığı sadə həqiqətlər, bugünkü həyatımızın dilində. Hər videoda bir anlayışın arxasındakı psixologiyanı açırıq ki, izləyici öz gündəliyinə bir az fərqli baxsın.","kintsugi"],
+    ["Elm, texnologiya və trendlər","Hamının danışdığı mövzunun necə başladığını və sabahımıza necə təsir edəcəyini qısa və aydın danışırıq. Mürəkkəb mövzuları sadələşdirmədən, hər kəsin anlayacağı dildə izah edir, trendin səs-küyündən kənarda onun əsl mənasını göstəririk.","spark"]
+  ],
+  formats: [
+    ["Hekayəyə inteqrasiya","Brend mövzu ilə bağlı olduqda hekayənin içində təbii şəkildə yer alır."],
+    ["Xüsusi epizod","Brendin tarixi, istehsalı və ya missiyası haqqında ayrıca qısa sənədli film."],
+    ["Rubrika tərəfdaşlığı","Bir silsilənin bir neçə epizod boyunca dəstəklənməsi."],
+    ["Çarpaz yayım","Video üç platformada eyni vaxtda; Stories və pinlənmiş şərh daxil."]
+  ],
+  team: [
+    ["Nurlan Bürcəliyev","Həmtəsisçi, Kreativ Prodüser","İdeya, çəkiliş planı, montaj və animasiya."],
+    ["Aftandil","FikirList-in səsi","Hekayələrin diktoru və aparıcısı."]
+  ]
+};
+
+/* Son məlum real rəqəmlər — cədvələ qoşulmaq mümkün olmayanda göstərilir */
+const SNAPSHOT = {
+  updatedAt:"2026-11-26", email:"fikirlistmedia@gmail.com",
+  yt_followers:2710, yt_posts:49, yt_views30d:463094, yt_avgViews:51455, yt_medianViews:1589, yt_er:5.6, yt_best:449007,
+  tt_followers:3751, tt_posts:26, tt_best:949800,
+  ig_followers:2453, ig_posts:26
+};
+
+/* Nümunə məlumat — yalnız SHEET_ID boş olanda göstərilir */
+const DEMO = {
+  updatedAt:"2026-11-26", email:"", phone:"",
+  ig_followers:24800, ig_posts:96, ig_views30d:412000, ig_avgViews:18600, ig_medianViews:11200, ig_er:6.4, ig_best:310000,
+  tt_followers:15300, tt_posts:88, tt_views30d:268000, tt_avgViews:14100, tt_medianViews:7900, tt_er:5.1, tt_best:190000,
+  yt_followers:3900, yt_posts:74, yt_views30d:96000, yt_avgViews:5200, yt_medianViews:3100, yt_er:4.2, yt_best:64000,
+  aud_label:"Instagram izləyiciləri", aud_gender_female:47, aud_gender_male:53,
+  "aud_age_13-17":4, "aud_age_18-24":33, "aud_age_25-34":38, "aud_age_35-44":16, "aud_age_45-54":6, "aud_age_55+":3,
+  aud_city_1_label:"Bakı", aud_city_1_value:52, aud_city_2_label:"Sumqayıt", aud_city_2_value:6, aud_city_3_label:"Gəncə", aud_city_3_value:5, aud_city_4_label:"İstanbul", aud_city_4_value:3, aud_city_5_label:"Tbilisi", aud_city_5_value:2,
+  top_1_title:"Nümunə video adı", top_1_views:310000, top_1_platform:"Instagram",
+  top_2_title:"Nümunə video adı", top_2_views:190000, top_2_platform:"TikTok",
+  top_3_title:"Nümunə video adı", top_3_views:142000, top_3_platform:"Instagram"
+};
+
+/* Girişdəki vizual: YouTube video ID-ləri və adları */
+const VIDEOS = [
+  ["tWUONBTcYHc","Mir Mövsüm Ağanın az bilinən hekayəsi"],
+  ["lgjfheZsgus","Himnimizin sözlərini yazan adama nə etdilər?"],
+  ["NH3ThDE0Syk","Dolce far niente: heç nə etməməyin şirinliyi"],
+  ["TMFKEbDCuIk","Səadət sarayının arxasındakı faciəli hekayə"],
+  ["4fOet-sFbsU","Kasparovu məğlub edən kompüter"],
+  ["bjfX5RBs05Y","Bu adamın hekayəsini bilirdin?"],
+  ["bdg1e8EkQLE","Səni istəməyən birinə niyə bağlanırsan?"],
+  ["jYgi2SdRAew","Dünyanın ən tənha yeri"],
+  ["V14Ajs5oCw8","Bir şəhər musiqinin səsini dəyişə bilərmi?"]
+];
+
+const LOGO1 = "M16 4H82V31H35V56H74V83H35V188H4V81H33V58H4V17L8 9ZM98 4H128V31H98ZM98 55H128V188H98ZM143 4H175V60H264V86H194L264 184V188H231L175 109V188H143ZM279 4H310V31H279ZM279 55H310V188H279ZM353 55H410V85H356V188H325V83H353Z", LOGO2 = "M98 210H128V366H158V394H98ZM173 210H204V237H173ZM173 261H204V394H173ZM249 276H322V302H256L250 308V317L254 321H287Q320 321 322 352V368Q322 394 291 394H220V368H286L291 363V353L287 348H243Q223 347 220 325V302Q220 276 249 276ZM338 210H368V261H408V289H368V366H409V394H337Z";
+const WORDMARK = `<svg viewBox="0 0 755 192" role="img" aria-label="FikirList"><path d="${LOGO1}"/><path transform="translate(342 -206)" d="${LOGO2}"/></svg>`;
+const STACKED = `<svg class="mark" viewBox="0 0 414 398" aria-hidden="true"><path d="${LOGO1}${LOGO2}"/></svg>`;
+const ICON = {
+  ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>',
+  tt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 3h-3.1v11.6a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V8.9a5.8 5.8 0 1 0 4.9 5.7V8.8a7 7 0 0 0 4 1.3V7a4 4 0 0 1-4-4z"/></svg>',
+  yt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>',
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>',
+  eskiz:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3.5" width="20" height="21" rx="2"/><circle cx="14" cy="11" r="3.6"/><path d="M7.5 21c1.2-3.3 3.6-5 6.5-5s5.3 1.7 6.5 5"/></svg>',
+  kintsugi:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11h20l-2 9a4 4 0 0 1-4 3H10a4 4 0 0 1-4-3z"/><path d="M12 11l2.5 4-2 3 2.5 5" stroke-width="2.2"/></svg>',
+  spark:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="14" cy="14" r="2.2"/><ellipse cx="14" cy="14" rx="11" ry="4.5"/><ellipse cx="14" cy="14" rx="11" ry="4.5" transform="rotate(60 14 14)"/><ellipse cx="14" cy="14" rx="11" ry="4.5" transform="rotate(-60 14 14)"/></svg>',
+  person:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="14" cy="10" r="5"/><path d="M4.5 25c1.4-5 5-7.5 9.5-7.5s8.1 2.5 9.5 7.5"/></svg>',
+  archive:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="20" height="6" rx="1.5"/><path d="M6 11v11.5h16V11M11.5 15.5h5"/></svg>',
+  mind:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4.5a7.5 7.5 0 0 0-4.5 13.5V22h9v-4A7.5 7.5 0 0 0 14 4.5zM11 25h6"/></svg>',
+  globe:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="14" cy="14" r="10"/><path d="M4 14h20M14 4c3 3 4.5 6.3 4.5 10S17 21 14 24c-3-3-4.5-6.3-4.5-10S11 7 14 4z"/></svg>'
+};
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num = v => { if (v === null || v === undefined || v === "") return null; const n = typeof v === "number" ? v : parseFloat(String(v).replace(/\s/g,"").replace(",", ".")); return isFinite(n) ? n : null; };
+const fmt = v => { const n = num(v); if (n === null) return "—";
+  const c = x => x.toFixed(1).replace(".", ",").replace(",0", "");
+  if (n >= 1e6) return c(n/1e6) + " mln"; if (n >= 1e4) return Math.round(n/1e3) + " min"; if (n >= 1e3) return c(n/1e3) + " min"; return String(Math.round(n)); };
+const pct = v => { const n = num(v); return n === null ? "—" : String(Math.round(n*10)/10).replace(".", ",") + "%"; };
+const months = ["yanvar","fevral","mart","aprel","may","iyun","iyul","avqust","sentyabr","oktyabr","noyabr","dekabr"];
+const dateAz = v => { if (v instanceof Date) return v.getDate()+" "+months[v.getMonth()]+" "+v.getFullYear();
+  const m = /(\d{4})-(\d{2})-(\d{2})/.exec(String(v||"")); return m ? (+m[3])+" "+months[+m[2]-1]+" "+m[1] : ""; };
+const safeUrl = u => /^https:\/\//.test(String(u||"")) ? String(u) : "";
+
+const REEL_SVG = `<svg class="base" viewBox="0 0 312 555" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5e5040"/><stop offset="1" stop-color="#16120e"/></linearGradient>
+<pattern id="dots" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".9" fill="#000" opacity=".4"/></pattern>
+<radialGradient id="vig" cx=".5" cy=".42" r=".72"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".82"/></radialGradient>
+<linearGradient id="face" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cdb895"/><stop offset="1" stop-color="#7d6649"/></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".7"/></linearGradient></defs>
+<rect width="312" height="555" fill="url(#sky)"/><rect y="330" width="312" height="225" fill="#251d16"/>
+<path d="M66 555 C66 430 102 392 156 386 C210 392 246 430 246 555Z" fill="#33271c"/><path d="M156 386 C210 392 246 430 246 555 L156 555Z" fill="#1f1711"/>
+<path d="M132 392 L156 430 L180 392" fill="none" stroke="#cbbfa8" stroke-width="3" opacity=".5"/>
+<rect x="137" y="330" width="38" height="62" rx="10" fill="#9a7f5b"/><ellipse cx="156" cy="268" rx="60" ry="76" fill="url(#face)"/>
+<path d="M96 250 C94 200 122 180 160 182 C198 184 220 210 216 250 C204 216 180 206 156 208 C130 208 106 222 96 250Z" fill="#1b1510"/>
+<path d="M134 302 Q156 292 178 302 Q156 308 134 302Z" fill="#1b1510"/>
+<rect x="129" y="259" width="15" height="3.5" rx="1.7" fill="#271e16"/><rect x="169" y="259" width="15" height="3.5" rx="1.7" fill="#271e16"/>
+<rect width="312" height="555" fill="url(#dots)"/><rect width="312" height="555" fill="url(#vig)"/><rect width="312" height="555" fill="url(#fade)"/>
+<rect x="16" y="16" width="280" height="2.5" rx="1.2" fill="#fff" opacity=".25"/><rect x="16" y="16" width="160" height="2.5" rx="1.2" fill="#fff" opacity=".9"/>
+<g transform="translate(18 32) scale(.085)" fill="#fff"><path d="${LOGO1}"/><path transform="translate(342 -206)" d="${LOGO2}"/></g>
+<g class="sub" text-anchor="middle"><text x="156" y="466"><tspan class="w" style="animation-delay:.3s">Bu</tspan> <tspan class="w" style="animation-delay:.6s">fotoşəkildəki</tspan> <tspan class="w" style="animation-delay:.9s">adam</tspan></text>
+<text x="156" y="491"><tspan class="w" style="animation-delay:1.3s">tarixdən</tspan> <tspan class="w" style="animation-delay:1.6s">silinmişdi.</tspan></text></g></svg>`;
+const REEL = () => `<div class="reel" aria-label="FikirList videolarından kadrlar"><div class="screen">${REEL_SVG}
+ <div class="slides">${VIDEOS.map(v => `<div class="slide" data-id="${esc(v[0])}" style="background-image:url('https://i.ytimg.com/vi/${encodeURIComponent(v[0])}/oar2.jpg'),url('https://i.ytimg.com/vi/${encodeURIComponent(v[0])}/hqdefault.jpg')"></div>`).join("")}</div>
+ <div class="shade"></div>
+ <div class="segs">${VIDEOS.map(() => `<i><b></b></i>`).join("")}</div>
+ <svg class="rlogo" viewBox="0 0 755 192"><path d="${LOGO1}"/><path transform="translate(342 -206)" d="${LOGO2}"/></svg>
+ <div class="side"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.2C1.4 8.4 3.6 5 7 5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8C19.5 16.4 12 21 12 21z"/></svg><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><svg viewBox="0 0 24 24"><path d="M3 11l18-8-6 18-3-7z"/></svg></div>
+ <div class="cap" aria-live="off"></div>
+</div></div>`;
+
+function bars(rows) {
+  rows = rows.filter(r => num(r[1]) !== null && num(r[1]) > 0);
+  if (!rows.length) return `<p class="empty">Məlumat tezliklə əlavə olunacaq.</p>`;
+  const max = Math.max(...rows.map(r => num(r[1])));
+  const lead = rows.findIndex(r => num(r[1]) === max);
+  return `<div class="bars">${rows.map((r,i) => `<div class="bar${i===lead?" lead":""}"><span>${esc(r[0])}</span><span class="track"><i style="width:${(num(r[1])/max*100).toFixed(1)}%"></i></span><em>${esc(pct(r[1]))}</em></div>`).join("")}</div>`;
+}
+
+function render(D, demo) {
+  const P = STATIC.platforms.map(p => ({ ...p,
+    handle: D[p.id+"_handle"] || p.handle, url: safeUrl(D[p.id+"_url"]) || p.url,
+    followers:num(D[p.id+"_followers"]), posts:num(D[p.id+"_posts"]), views30d:num(D[p.id+"_views30d"]),
+    avg:num(D[p.id+"_avgViews"]), med:num(D[p.id+"_medianViews"]), er:num(D[p.id+"_er"]), best:num(D[p.id+"_best"]) }));
+  const sum = k => { const xs = P.map(p => p[k]).filter(x => x !== null); return xs.length ? xs.reduce((a,b) => a+b, 0) : null; };
+  const ers = P.filter(p => p.er !== null && p.views30d);
+  const er = ers.length ? ers.reduce((a,p) => a + p.er*p.views30d, 0) / ers.reduce((a,p) => a + p.views30d, 0) : null;
+  const total = sum("followers");
+  const upd = dateAz(D.updatedAt);
+  const ages = ["13-17","18-24","25-34","35-44","45-54","55+"].map(a => [a.replace("-", "–"), D["aud_age_"+a]]);
+  const cities = [1,2,3,4,5].map(i => [D["aud_city_"+i+"_label"], D["aud_city_"+i+"_value"]]).filter(r => r[0]);
+  const f = num(D.aud_gender_female), m = num(D.aud_gender_male);
+  const top = [1,2,3,4,5].map(i => ({ t:D["top_"+i+"_title"], v:D["top_"+i+"_views"], u:safeUrl(D["top_"+i+"_url"]), p:D["top_"+i+"_platform"] })).filter(x => x.t);
+  const email = String(D.email||"").trim() || STATIC.email, phone = String(D.phone||"").trim();
+  const slogan = esc(STATIC.slogan);
+  const figs = [[sum("followers"), fmt, "ümumi auditoriya"], [sum("views30d"), fmt, "baxış, son 30 gün"], [er, pct, "orta engagement"], [sum("posts"), fmt, "dərc olunmuş video"]];
+
+  document.getElementById("app").innerHTML = `
+${demo ? `<div class="notice">Nümunə rəqəmlər göstərilir. Real rəqəmlər cədvəl qoşulandan sonra görünəcək.</div>` : ""}
+<nav><div class="wrap">
+ <a class="brand" href="#top">${WORDMARK}<span>${slogan}</span></a>
+ <div class="acts"><button class="btn" id="pdf" type="button">PDF yüklə</button><a class="btn pri" href="#contact">Əməkdaşlıq</a></div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+ <div class="hgrid"><div>
+  <h1>Hər şeydən<br>bir fikir<em>.</em></h1>
+  <p class="lede">${esc(D.bio || STATIC.bio)}</p>
+  <div class="cta"><a class="btn pri" href="#contact">Əməkdaşlıq təklif edin</a><a class="btn" href="#platforms">Rəqəmlərə baxın</a></div>
+ </div>${REEL()}</div>
+ <div class="figs">${figs.map(x => `<div class="fig"><b data-n="${x[0] ?? ""}" data-k="${x[1] === pct ? "p" : "n"}">${x[1](x[0])}</b><span>${x[2]}</span></div>`).join("")}</div>
+ ${upd ? `<div class="upd"><span class="live"></span>Rəqəmlər hər gün avtomatik yenilənir · son yenilənmə ${esc(upd)}</div>` : ""}
+</div></header>
+${VIDEOS.length ? `<div class="ticker" aria-hidden="true"><div>${[0,1].map(() => VIDEOS.map(v => `<span>${esc(v[1])}</span>`).join("")).join("")}</div></div>` : ""}
+
+<section class="sec" id="platforms" style="border-top:0"><div class="wrap">
+ <div class="head"><h2>Üç platforma,<br>bir auditoriya</h2><p>Instagram, TikTok və YouTube-da eyni hekayə hər platformanın dilinə uyğunlaşdırılır. Rəqəmlər son 30 gün üzrədir.</p></div>
+ ${total ? `<div class="share"><div class="share-bar">${P.filter(p => p.followers).map(p => `<i style="flex:${p.followers};background:${p.c}"></i>`).join("")}</div>
+  <div class="legend">${P.filter(p => p.followers).map(p => `<span><span class="dot" style="background:${p.c}"></span>${esc(p.name)}<b>${pct(p.followers/total*100)}</b></span>`).join("")}</div></div>` : ""}
+ <div class="plats">${P.map(p => `<article class="plat" style="--c:${p.c}">
+  <div class="ph"><div class="pn">${ICON[p.id]}${esc(p.name)}</div><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.handle)}</a></div>
+  <div class="pbig">${fmt(p.followers)}</div><div class="plab">${p.unit}</div>
+  <div class="mets">
+   <div class="met"><b>${fmt(p.views30d)}</b><span>baxış, 30 gün</span></div>
+   <div class="met"><b>${pct(p.er)}</b><span>engagement</span></div>
+   <div class="met"><b>${fmt(p.avg)}</b><span>orta baxış</span></div>
+   <div class="met"><b>${fmt(p.best)}</b><span>ən yaxşı video</span></div>
+  </div></article>`).join("")}</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+ <div class="head"><h2>Kimlər izləyir</h2><p>${(() => { const a = ages.filter(x => num(x[1])).sort((x,y) => num(y[1]) - num(x[1])); return a.length >= 2 ? `Auditoriyanın ${pct(num(a[0][1]) + num(a[1][1]))}-i ${esc(a[0][0])} və ${esc(a[1][0])} yaş qruplarındadır.` : ""; })()}${D.aud_label ? ` Mənbə: ${esc(D.aud_label)}.` : ""}</p></div>
+ <div class="aud">
+  <div class="card"><h3>Yaş</h3>${bars(ages)}</div>
+  <div class="card"><h3>Cins</h3>${f !== null && m !== null ? `<div class="gbig"><div><b>${pct(f)}</b><span>qadın</span></div><div><b>${pct(m)}</b><span>kişi</span></div></div><div class="gbar"><i style="flex:${f};background:var(--y)"></i><i style="flex:${m};background:rgba(244,241,234,.55)"></i></div>` : `<p class="empty">Məlumat tezliklə əlavə olunacaq.</p>`}</div>
+  <div class="card"><h3>Şəhərlər</h3>${bars(cities)}</div>
+ </div>
+</div></section>
+
+
+<section class="sec"><div class="wrap">
+ <div class="head"><h2>Nədən danışırıq</h2><p>Hər silsilə bir sualla başlayır. Cavabı birlikdə axtarırıq.</p></div>
+ <div class="sers">${STATIC.series.map(s => `<div class="ser">${ICON[s[2]]}<h3>${esc(s[0])}${s[3] ? `<span class="tag">${esc(s[3])}</span>` : ""}</h3><p>${esc(s[1])}</p></div>`).join("")}</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+ <div class="head"><h2>Əməkdaşlıq formatları</h2><p>Qiymətlər layihənin həcminə görə fərdi müəyyən olunur.</p></div>
+ <div class="fmts">${STATIC.formats.map(x => `<div class="fmt"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join("")}</div>
+ <p class="principle">Brend hekayəyə yalnız mövzuya təbii uyğun gəldikdə daxil edilir. Faktları dəyişən və ya auditoriyanı yanıldan inteqrasiyalar qəbul edilmir. Bu, izləyicinin FikirList-ə olan etibarını qoruyur və tərəfdaşın mesajını daha inandırıcı edir.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+ <div class="head"><h2>Komanda</h2></div>
+ <div class="team">${STATIC.team.map(t => `<div class="card mem"><div class="av">${esc(t[0].trim()[0])}</div><div><h3>${esc(t[0])}</h3><p class="role">${esc(t[1])}</p><p>${esc(t[2])}</p></div></div>`).join("")}</div>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+ <div class="close">
+  ${STACKED}
+  <div class="big">Hər şeydən<br>bir fikir<em>.</em></div>
+  <p>Brendinizin hekayəsini birlikdə danışaq. Reklam və tərəfdaşlıq təklifləri üçün sizə rahat olan yolla yazın.</p>
+  <div class="contact">
+   <a class="cbox" href="mailto:${esc(email)}?subject=${encodeURIComponent("Əməkdaşlıq təklifi — FikirList")}"><span class="cic">${ICON.mail}</span><span><small>E-poçt ilə yazın</small><b>${esc(email)}</b></span></a>
+   <a class="cbox" href="${esc(STATIC.igDM)}" target="_blank" rel="noopener"><span class="cic ig">${ICON.ig}</span><span><small>Instagram-da birbaşa mesaj</small><b>@fikirlist</b></span></a>
+  </div>
+  <button class="copy" id="copyMail" type="button">E-poçtu kopyala</button>
+  ${phone ? `<p style="margin:14px auto 0"><a href="tel:${esc(phone.replace(/\s/g,""))}">${esc(phone)}</a></p>` : ""}
+  <div class="socials">${P.map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener" style="--c:${p.c}">${ICON[p.id]}${esc(p.name)}</a>`).join("")}</div>
+ </div>
+ <div class="fine"><span>© FikirList</span><span>${upd ? "Son yenilənmə: " + esc(upd) : ""}</span></div>
+</div></footer>`;
+
+  document.getElementById("pdf").addEventListener("click", () => { try { window.print(); } catch (e) {} });
+  const cm = document.getElementById("copyMail");
+  cm.addEventListener("click", async () => { try { await navigator.clipboard.writeText(email); cm.textContent = "Kopyalandı ✓"; } catch (e) { cm.textContent = email; } setTimeout(() => { cm.textContent = "E-poçtu kopyala"; }, 2500); });
+  countUp();
+  startReel();
+}
+
+function startReel() {
+  const reel = document.querySelector(".reel"); if (!reel || !VIDEOS.length) return;
+  const slides = [...reel.querySelectorAll(".slide")], segs = [...reel.querySelectorAll(".segs i")], cap = reel.querySelector(".cap");
+  clearInterval(window.__reelT); const ok = new Array(slides.length).fill(false); let started = false, i = -1, timer = null;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches, DUR = 5200;
+  const show = n => {
+    slides.forEach((s, k) => s.classList.toggle("on", k === n));
+    segs.forEach((g, k) => { g.classList.toggle("done", k < n); g.classList.remove("on"); });
+    void segs[n].offsetWidth; segs[n].style.setProperty("--dur", DUR + "ms"); segs[n].classList.add("on");
+    cap.textContent = "";
+    String(VIDEOS[n][1]).split(/\s+/).forEach((w, k) => { const sp = document.createElement("span"); sp.textContent = w; sp.style.animationDelay = (0.35 + k * 0.12) + "s"; cap.appendChild(sp); cap.appendChild(document.createTextNode(" ")); });
+  };
+  const next = () => { let n = i; for (let t = 0; t < slides.length; t++) { n = (n + 1) % slides.length; if (ok[n]) break; } if (!ok[n]) return; i = n; show(i); };
+  const begin = () => { if (started) return; started = true; reel.classList.add("has-slides"); next(); if (!reduce) window.__reelT = timer = setInterval(next, DUR); };
+  VIDEOS.forEach((v, k) => {
+    const im = new Image();
+    im.onload = () => { if (im.naturalWidth > 200) { ok[k] = true; slides[k].style.backgroundImage = `url('${im.src}')`; begin(); } else tryHq(); };
+    const tryHq = () => { const h = new Image(); h.onload = () => { if (h.naturalWidth > 200) { ok[k] = true; slides[k].style.backgroundImage = `url('${h.src}')`; begin(); } }; h.src = "https://i.ytimg.com/vi/" + encodeURIComponent(v[0]) + "/hqdefault.jpg"; };
+    im.onerror = tryHq;
+    im.src = "https://i.ytimg.com/vi/" + encodeURIComponent(v[0]) + "/oar2.jpg";
+  });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) { clearInterval(timer); timer = null; } else if (started && !reduce && !timer) window.__reelT = timer = setInterval(next, DUR); });
+}
+
+function countUp() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll(".fig b[data-n]").forEach(el => {
+    const end = num(el.dataset.n); if (end === null) return;
+    const isP = el.dataset.k === "p", t0 = performance.now(), dur = 1100;
+    const step = t => { const k = Math.min(1, (t - t0) / dur), e = 1 - (1 - k) ** 3;
+      el.textContent = isP ? pct(end * e) : fmt(Math.round(end * e)); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+}
+
+function fail(msg) {
+  document.getElementById("app").innerHTML = `<div class="loading"><div style="text-align:center;padding:24px"><h2>Məlumatları yükləmək olmadı</h2><p style="color:var(--soft)">${esc(msg)}</p></div></div>`;
+}
+
+if (!SHEET_ID) { render(DEMO, true); }
+else {
+  const timer = setTimeout(() => render(SNAPSHOT, false), 8000);
+  window.fikirSheet = resp => {
+    clearTimeout(timer);
+    try {
+      if (!resp || resp.status === "error") throw new Error("Cədvəl oxunmadı");
+      const D = {};
+      resp.table.rows.forEach(r => { const k = r.c && r.c[0] && r.c[0].v; if (!k) return; const c = r.c[1]; D[String(k).trim()] = c ? (c.v ?? c.f ?? "") : ""; });
+      if (typeof D.updatedAt === "string" && D.updatedAt.indexOf("Date(") === 0) { const a = D.updatedAt.match(/\d+/g).map(Number); D.updatedAt = new Date(a[0], a[1], a[2]); }
+      render(D, false);
+    } catch (e) { render(SNAPSHOT, false); }
+  };
+  const s = document.createElement("script");
+  s.src = "https://docs.google.com/spreadsheets/d/" + encodeURIComponent(SHEET_ID) + "/gviz/tq?headers=1&sheet=" + encodeURIComponent(SHEET_NAME) + "&tqx=" + encodeURIComponent("responseHandler:fikirSheet") + "&_=" + Date.now();
+  s.onerror = () => { clearTimeout(timer); render(SNAPSHOT, false); };
+  document.body.appendChild(s);
+}
+}
+</script>
+</body>
+</html>

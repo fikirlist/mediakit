@@ -62,47 +62,77 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px
 .cta{display:flex;gap:10px;flex-wrap:wrap}
 .reel{justify-self:center;width:min(100%,320px);aspect-ratio:9/16;border-radius:34px;padding:7px;background:linear-gradient(160deg,#3a3a36,#121210 40%,#2a2a26);box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.06)}
 
-.sub{font:600 17px "Inter Tight",sans-serif;fill:var(--y)}
-.screen{position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;background:#16120e}
-.screen .base{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
-.slides{position:absolute;inset:0}
-.slide{position:absolute;inset:-2%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.1s ease;will-change:transform,opacity}
-.slide.on{opacity:1;animation:kb 6.5s ease-out both}
-.slide:nth-child(even).on{animation-name:kb2}
-@keyframes kb{from{transform:scale(1.06) translate(1%,1%)}to{transform:scale(1.2) translate(-2%,-3%)}}
-@keyframes kb2{from{transform:scale(1.2) translate(-2%,0)}to{transform:scale(1.06) translate(1%,-1%)}}
-.has-slides .base .sub{display:none}
-.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent 18%,transparent 52%,rgba(0,0,0,.82));pointer-events:none}
-.segs{position:absolute;left:14px;right:14px;top:14px;display:flex;gap:4px}
-.segs i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden}
-.segs b{display:block;height:100%;width:0;background:#fff}
-.segs i.done b{width:100%}
-.segs i.on b{animation:seg var(--dur,5s) linear forwards}
-@keyframes seg{to{width:100%}}
-.rlogo{position:absolute;left:16px;top:28px;height:14px;width:auto;fill:#fff;opacity:.95}
-.side{position:absolute;right:12px;bottom:34%;display:grid;gap:18px}
-.side svg{width:24px;height:24px;fill:#fff;opacity:.92;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))}
-.cap{position:absolute;left:16px;right:52px;bottom:12%;text-align:center;font:700 17px/1.3 "Inter Tight",sans-serif;color:var(--y);text-shadow:0 2px 10px rgba(0,0,0,.7);text-wrap:balance}
-.cap span{display:inline-block;opacity:0;transform:translateY(8px) scale(.96);animation:wd .45s cubic-bezier(.2,.8,.2,1) forwards}
-@keyframes wd{to{opacity:1;transform:none}}
+a.reel{display:block;text-decoration:none;color:#fff}
+.screen{position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;background:#0e0c09;isolation:isolate}
+.slide{position:absolute;inset:0;opacity:0;overflow:hidden;z-index:1}
+.slide.on{opacity:1;z-index:2}
+.slide[class*="out-"]{opacity:1;z-index:1}
+.cover{position:absolute;inset:0;display:flex;align-items:center;padding:28px 26px;background:linear-gradient(160deg,#2b2419,#0e0c09 70%)}
+.slide:nth-child(3n+2) .cover{background:linear-gradient(160deg,#1d2430,#0b0d11 70%)}
+.slide:nth-child(3n) .cover{background:linear-gradient(160deg,#30201d,#100b0a 70%)}
+.cover span{font:700 25px/1.15 "Inter Tight",sans-serif;letter-spacing:-.02em;color:var(--y);text-wrap:balance}
+.img{position:absolute;inset:-3%;background-size:cover;background-position:center;opacity:0;transition:opacity .4s}
+.img.ok{opacity:1}
+.slide.on .img{animation:kb 6s ease-out both}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.16) translate(-1.5%,-2%)}}
+.in-swipe{animation:inSwipe .65s cubic-bezier(.2,.8,.2,1) both}
+.out-swipe{animation:outSwipe .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes inSwipe{from{transform:translateY(100%)}to{transform:none}}
+@keyframes outSwipe{to{transform:translateY(-100%)}}
+.in-zoom{animation:inZoom .6s cubic-bezier(.2,.8,.2,1) both}
+.out-zoom{animation:outZoom .6s ease-in both}
+@keyframes inZoom{from{transform:scale(1.6);opacity:0;filter:blur(14px)}to{transform:none;opacity:1;filter:none}}
+@keyframes outZoom{to{transform:scale(.85);opacity:0}}
+.in-whip{animation:inWhip .55s cubic-bezier(.3,.9,.2,1) both}
+.out-whip{animation:outWhip .55s cubic-bezier(.6,0,.8,.2) both}
+@keyframes inWhip{from{transform:translateX(105%) skewX(-10deg);filter:blur(18px)}to{transform:none;filter:none}}
+@keyframes outWhip{to{transform:translateX(-105%) skewX(10deg);filter:blur(18px)}}
+.in-spin{animation:inSpin .7s cubic-bezier(.2,.8,.2,1) both}
+.out-spin{animation:outSpin .7s ease-in both}
+@keyframes inSpin{from{transform:rotate(-14deg) scale(1.45);opacity:0}to{transform:none;opacity:1}}
+@keyframes outSpin{to{transform:rotate(12deg) scale(.8);opacity:0}}
+.out-flash{opacity:0!important}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:5;pointer-events:none}
+.flash.go{animation:fl .5s ease-out}
+@keyframes fl{0%{opacity:0}22%{opacity:.9}100%{opacity:0}}
+.shade{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.45),transparent 16%,transparent 58%,rgba(0,0,0,.85))}
+.rtop{position:absolute;top:14px;left:16px;right:14px;z-index:6;display:flex;justify-content:space-between;align-items:center;font:700 19px "Inter Tight",sans-serif;letter-spacing:-.02em}
+.rtop svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8}
+.side{position:absolute;right:10px;bottom:88px;z-index:6;display:grid;gap:17px;justify-items:center}
+.side svg{width:25px;height:25px;fill:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))}
+.disc{width:30px;height:30px;border-radius:8px;border:2px solid #fff;background:#0b0b0a;display:grid;place-items:center;animation:spin 7s linear infinite}
+.disc svg{width:20px;height:auto;filter:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.meta{position:absolute;left:14px;right:58px;bottom:16px;z-index:6}
+.who{display:flex;align-items:center;gap:8px;font:600 14px Inter,sans-serif}
+.av2{width:30px;height:30px;border-radius:50%;background:#0b0b0a;border:1px solid rgba(255,255,255,.45);display:grid;place-items:center;flex:none}
+.av2 svg{width:19px;height:auto;fill:#fff}
+.follow{border:1px solid rgba(255,255,255,.75);border-radius:8px;padding:1px 10px;font-size:13px;font-weight:600}
+.cap{margin:9px 0 7px;font:500 14px/1.35 Inter,sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.cap.go{animation:capIn .5s ease-out both}
+@keyframes capIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.music{display:flex;align-items:center;gap:6px;font-size:12px;overflow:hidden;white-space:nowrap}
+.music svg{width:13px;height:13px;fill:#fff;flex:none}
+.music .mq{flex:1;overflow:hidden}
+.music .mq span{display:inline-block;animation:mq 9s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-60%)}}
 .ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .ticker div{display:flex;gap:40px;width:max-content;animation:tk 60s linear infinite}
 .ticker span{font:500 15px "Inter Tight",sans-serif;color:var(--soft);white-space:nowrap;display:flex;align-items:center;gap:40px}
 .ticker span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--y)}
 .ticker:hover div{animation-play-state:paused}
 @keyframes tk{to{transform:translateX(-50%)}}
-
-.w{opacity:0;animation:pop 7s infinite}
-@keyframes pop{0%,3%{opacity:0}7%,88%{opacity:1}95%,100%{opacity:0}}
 .figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);margin-top:clamp(40px,6vw,72px);position:relative;z-index:1}
 .fig{padding:26px 22px 24px;border-left:1px solid var(--line)}
 .fig:first-child{border-left:0;padding-left:0}
 .fig b{display:block;font:600 clamp(36px,4.6vw,60px)/1 "Inter Tight",sans-serif;letter-spacing:-.045em;white-space:nowrap;font-variant-numeric:tabular-nums}
 .fig span{display:block;margin-top:10px;font-size:14px;color:var(--soft)}
+.fig span::before{content:"";display:inline-block;width:14px;height:2px;margin-right:8px;background:var(--y);vertical-align:4px}
 .upd{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;color:var(--soft);position:relative;z-index:1}
 .live{width:7px;height:7px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.15)}
 .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:40px}
 .head p{margin:0;color:var(--soft);max-width:48ch}
+.livenote{display:flex;align-items:center;gap:10px;justify-self:end;font-size:14px;border:1px solid var(--line2);border-radius:999px;padding:8px 16px}
 .share{margin-bottom:20px}
 .share-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:3px}
 .share-bar i{display:block;height:100%}
@@ -159,6 +189,37 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px
 .fmt:nth-child(2n){padding-left:32px;padding-right:0;border-left:1px solid var(--line)}
 .fmt p{color:var(--soft);margin:10px 0 0;max-width:44ch}
 .principle{margin-top:28px;color:var(--soft);font-size:15px;max-width:70ch}
+.why{position:relative;background:var(--y);color:#111;padding-block:clamp(56px,8vw,112px);overflow:hidden}
+.why::before{content:"";position:absolute;inset:0;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none}
+.why .wrap{position:relative}
+.why-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:44px}
+.why-head h2{font-size:clamp(34px,4.4vw,58px);letter-spacing:-.045em}
+.why-head p{margin:0;font-size:18px;line-height:1.55;color:rgba(17,17,17,.78);max-width:46ch}
+.why-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.wcard{border-top:2px solid #111;padding-top:18px}
+.wcard h3{font-size:21px}
+.wcard p{margin:10px 0 0;color:rgba(17,17,17,.74);font-size:15px;line-height:1.6}
+.proof{display:flex;flex-wrap:wrap;gap:12px 48px;margin-top:48px;padding-top:28px;border-top:1px solid rgba(17,17,17,.2)}
+.proof b{display:block;font:600 clamp(34px,4vw,52px)/1 "Inter Tight",sans-serif;letter-spacing:-.045em}
+.proof span{display:block;margin-top:8px;font-size:14px;color:rgba(17,17,17,.7)}
+.offer-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px 56px;align-items:end;margin-bottom:44px}
+.offer-top p{margin:0 0 22px;color:var(--soft);font-size:17px;max-width:48ch}
+.offers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.offer{position:relative;display:flex;flex-direction:column;gap:12px;background:var(--s1);border:1px solid var(--line);border-radius:24px;padding:26px 24px;transition:transform .25s,border-color .25s}
+.offer:hover{transform:translateY(-3px);border-color:var(--line2)}
+.offer.feat{background:linear-gradient(170deg,rgba(255,210,31,.17),var(--s1) 58%);border-color:rgba(255,210,31,.5);box-shadow:0 30px 70px -40px rgba(255,210,31,.45)}
+.flag{position:absolute;top:18px;right:18px;background:var(--y);color:#111;font:600 12px Inter,sans-serif;border-radius:999px;padding:3px 10px}
+.oic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(255,210,31,.1);border:1px solid rgba(255,210,31,.28);color:var(--y)}
+.oic svg{width:24px;height:24px}
+.offer h3{font-size:21px;margin-top:6px}
+.offer p{margin:0;color:var(--soft);font-size:15px}
+.offer ul{list-style:none;margin:auto 0 0;padding:16px 0 0;border-top:1px solid var(--line);display:grid;gap:9px;font-size:14px;color:#d6d2c9}
+.offer li{display:flex;gap:9px;align-items:baseline}
+.offer li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--y);transform:translateY(-1px)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:44px;padding-top:30px;border-top:1px solid var(--line)}
+.step i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--y);color:#111;font:700 15px "Inter Tight",sans-serif;font-style:normal;margin-bottom:14px}
+.step b{display:block;font:600 18px "Inter Tight",sans-serif;letter-spacing:-.02em}
+.step span{display:block;margin-top:6px;color:var(--soft);font-size:14px}
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .mem{display:flex;gap:18px;align-items:center}
 .av{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font:600 22px "Inter Tight",sans-serif;background:var(--s2);border:1px solid var(--line2);color:var(--y)}
@@ -188,10 +249,10 @@ footer::before{content:"";position:absolute;left:50%;top:0;transform:translateX(
 .socials svg{width:16px;height:16px}
 .fine{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:72px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--mute);position:relative}
 .loading{min-height:60vh;display:grid;place-items:center;color:var(--soft)}
-@media(prefers-reduced-motion:reduce){.w{animation:none;opacity:1}.slide.on,.ticker div,.segs i.on b{animation:none}.segs i.on b{width:100%}.cap span{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}}
-@media(max-width:980px){.plats,.aud{grid-template-columns:minmax(0,1fr)}.sers{grid-template-columns:minmax(0,1fr)}.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.fig:nth-child(3){border-left:0;padding-left:0}.fig:nth-child(n+3){border-top:1px solid var(--line)}}
-@media(max-width:760px){.hgrid{grid-template-columns:minmax(0,1fr)}.reel{width:min(64vw,270px)}.head{grid-template-columns:minmax(0,1fr)}.fmts,.team{grid-template-columns:minmax(0,1fr)}.fmt,.fmt:nth-child(2n){padding:22px 0;border-left:0}.brand span{display:none}}
-@media(max-width:520px){.reel{width:min(56vw,220px);border-radius:28px}.screen{border-radius:22px}.ser{grid-template-columns:minmax(0,1fr);padding:22px}.ser svg{grid-row:auto;margin-bottom:12px}.ser h3{font-size:21px}.acts .btn:not(.pri){display:none}.tops li{grid-template-columns:2rem minmax(0,1fr) auto;gap:10px}.tops a,.tops .tt{font-size:16px}.chip{display:none}.fig{padding:20px 14px}.fig:nth-child(odd){padding-left:0}}
+@media(prefers-reduced-motion:reduce){.slide.on .img,.ticker div,.disc,.music .mq span,[class*="in-"],[class*="out-"]{animation:none!important}html{scroll-behavior:auto}}
+@media(max-width:980px){.offers,.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.plats,.aud{grid-template-columns:minmax(0,1fr)}.sers{grid-template-columns:minmax(0,1fr)}.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.fig:nth-child(3){border-left:0;padding-left:0}.fig:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(max-width:760px){.why-head,.offer-top{grid-template-columns:minmax(0,1fr)}.livenote{justify-self:start}.hgrid{grid-template-columns:minmax(0,1fr)}.reel{width:min(64vw,270px)}.head{grid-template-columns:minmax(0,1fr)}.fmts,.team{grid-template-columns:minmax(0,1fr)}.fmt,.fmt:nth-child(2n){padding:22px 0;border-left:0}.brand span{display:none}}
+@media(max-width:520px){.offers,.why-grid,.steps{grid-template-columns:minmax(0,1fr)}.reel{width:min(72vw,260px);border-radius:28px}.screen{border-radius:22px}.ser{grid-template-columns:minmax(0,1fr);padding:22px}.ser svg{grid-row:auto;margin-bottom:12px}.ser h3{font-size:21px}.acts .btn:not(.pri){display:none}.tops li{grid-template-columns:2rem minmax(0,1fr) auto;gap:10px}.tops a,.tops .tt{font-size:16px}.chip{display:none}.fig{padding:20px 14px}.fig:nth-child(odd){padding-left:0}}
 @media print{nav,.notice,.cta,body::before{display:none}.sec{padding-block:28px}.plat,.card,.ser{break-inside:avoid}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
@@ -224,10 +285,22 @@ const STATIC = {
     ["Elm, texnologiya və trendlər","Hamının danışdığı mövzunun necə başladığını və sabahımıza necə təsir edəcəyini qısa və aydın danışırıq. Mürəkkəb mövzuları sadələşdirmədən, hər kəsin anlayacağı dildə izah edir, trendin səs-küyündən kənarda onun əsl mənasını göstəririk.","spark"]
   ],
   formats: [
-    ["Hekayəyə inteqrasiya","Brend mövzu ilə bağlı olduqda hekayənin içində təbii şəkildə yer alır."],
-    ["Xüsusi epizod","Brendin tarixi, istehsalı və ya missiyası haqqında ayrıca qısa sənədli film."],
-    ["Rubrika tərəfdaşlığı","Bir silsilənin bir neçə epizod boyunca dəstəklənməsi."],
-    ["Çarpaz yayım","Video üç platformada eyni vaxtda; Stories və pinlənmiş şərh daxil."]
+    ["Hekayəyə inteqrasiya","Brend mövzu ilə bağlı olduqda hekayənin təbii hissəsinə çevrilir.",["Videoda 5–10 saniyəlik təbii yerləşdirmə","Təsvirdə və pinlənmiş şərhdə link","Instagram, TikTok və YouTube-da yayım"],"","insert"],
+    ["Xüsusi epizod","Brendinizin tarixi, istehsalı və ya missiyası haqqında ayrıca qısa sənədli film.",["Araşdırma və ssenari bizdən","Arxiv və çəkiliş materialları ilə kinematik montaj","Yayımdan sonra nəticə hesabatı"],"Tövsiyə edirik","film"],
+    ["Silsilə tərəfdaşlığı","Bir silsilənin bir neçə epizod boyunca dəstəklənməsi.",["Hər epizodda brend qeydi","Silsilə boyu ardıcıl görünürlük","Auditoriya ilə uzunmüddətli əlaqə"],"","layers"],
+    ["Çarpaz yayım","Bir video eyni vaxtda üç platformada yayımlanır.",["Instagram Reels, TikTok, YouTube Shorts","Stories və pinlənmiş şərh","Bir kontent, üç auditoriya"],"","share"]
+  ],
+  steps: [
+    ["Brief","Brendiniz, məqsədiniz və auditoriyanız haqqında qısa danışırıq."],
+    ["Araşdırma və ssenari","Mövzunu araşdırır, hekayəni və brendin yerini qururuq."],
+    ["Sizin təsdiqiniz","Ssenarini birlikdə yekunlaşdırır, sonra istehsala keçirik."],
+    ["Yayım və nəticə","Video üç platformada yayımlanır, nəticələri sizinlə bölüşürük."]
+  ],
+  why: [
+    ["Araşdırırıq, təkrarlamırıq","Hər hekayə arxiv sənədlərinə, köhnə qəzetlərə və etibarlı mənbələrə söykənir. Sənədi rəvayətdən ayırırıq."],
+    ["Bir dəqiqəlik kino","Real arxiv fotoları, kinematik kamera hərəkətləri və düşünülmüş səs dizaynı. Hər video qısa sənədli film kimi qurulur."],
+    ["Tanış mövzuya yeni bucaq","Hamının bildiyi adın az bilinən tərəfini, gündəlik vərdişin arxasındakı səbəbi tapırıq. Cavab sona qədər gözlədir."],
+    ["Öz dilimizdə, səmimi","Kölgədə qalmış şəxsiyyətləri və hadisələri Azərbaycan dilində, bağırmadan və şişirtmədən danışırıq."]
   ],
   team: [
     ["Nurlan Bürcəliyev","Həmtəsisçi, Kreativ Prodüser","İdeya, çəkiliş planı, montaj və animasiya."],
@@ -278,6 +351,10 @@ const ICON = {
   tt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 3h-3.1v11.6a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V8.9a5.8 5.8 0 1 0 4.9 5.7V8.8a7 7 0 0 0 4 1.3V7a4 4 0 0 1-4-4z"/></svg>',
   yt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>',
   mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>',
+  insert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 15h18M8 4v11"/></svg>',
+  film:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 5v14M17 5v14M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4"/></svg>',
+  layers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>',
+  share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.9l7.6-3.8M8.2 13.1l7.6 3.8"/></svg>',
   eskiz:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3.5" width="20" height="21" rx="2"/><circle cx="14" cy="11" r="3.6"/><path d="M7.5 21c1.2-3.3 3.6-5 6.5-5s5.3 1.7 6.5 5"/></svg>',
   kintsugi:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11h20l-2 9a4 4 0 0 1-4 3H10a4 4 0 0 1-4-3z"/><path d="M12 11l2.5 4-2 3 2.5 5" stroke-width="2.2"/></svg>',
   spark:'<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="14" cy="14" r="2.2"/><ellipse cx="14" cy="14" rx="11" ry="4.5"/><ellipse cx="14" cy="14" rx="11" ry="4.5" transform="rotate(60 14 14)"/><ellipse cx="14" cy="14" rx="11" ry="4.5" transform="rotate(-60 14 14)"/></svg>',
@@ -298,32 +375,23 @@ const dateAz = v => { if (v instanceof Date) return v.getDate()+" "+months[v.get
   const m = /(\d{4})-(\d{2})-(\d{2})/.exec(String(v||"")); return m ? (+m[3])+" "+months[+m[2]-1]+" "+m[1] : ""; };
 const safeUrl = u => /^https:\/\//.test(String(u||"")) ? String(u) : "";
 
-const REEL_SVG = `<svg class="base" viewBox="0 0 312 555" preserveAspectRatio="xMidYMid slice">
-<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5e5040"/><stop offset="1" stop-color="#16120e"/></linearGradient>
-<pattern id="dots" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".9" fill="#000" opacity=".4"/></pattern>
-<radialGradient id="vig" cx=".5" cy=".42" r=".72"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".82"/></radialGradient>
-<linearGradient id="face" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cdb895"/><stop offset="1" stop-color="#7d6649"/></linearGradient>
-<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".7"/></linearGradient></defs>
-<rect width="312" height="555" fill="url(#sky)"/><rect y="330" width="312" height="225" fill="#251d16"/>
-<path d="M66 555 C66 430 102 392 156 386 C210 392 246 430 246 555Z" fill="#33271c"/><path d="M156 386 C210 392 246 430 246 555 L156 555Z" fill="#1f1711"/>
-<path d="M132 392 L156 430 L180 392" fill="none" stroke="#cbbfa8" stroke-width="3" opacity=".5"/>
-<rect x="137" y="330" width="38" height="62" rx="10" fill="#9a7f5b"/><ellipse cx="156" cy="268" rx="60" ry="76" fill="url(#face)"/>
-<path d="M96 250 C94 200 122 180 160 182 C198 184 220 210 216 250 C204 216 180 206 156 208 C130 208 106 222 96 250Z" fill="#1b1510"/>
-<path d="M134 302 Q156 292 178 302 Q156 308 134 302Z" fill="#1b1510"/>
-<rect x="129" y="259" width="15" height="3.5" rx="1.7" fill="#271e16"/><rect x="169" y="259" width="15" height="3.5" rx="1.7" fill="#271e16"/>
-<rect width="312" height="555" fill="url(#dots)"/><rect width="312" height="555" fill="url(#vig)"/><rect width="312" height="555" fill="url(#fade)"/>
-<rect x="16" y="16" width="280" height="2.5" rx="1.2" fill="#fff" opacity=".25"/><rect x="16" y="16" width="160" height="2.5" rx="1.2" fill="#fff" opacity=".9"/>
-<g transform="translate(18 32) scale(.085)" fill="#fff"><path d="${LOGO1}"/><path transform="translate(342 -206)" d="${LOGO2}"/></g>
-<g class="sub" text-anchor="middle"><text x="156" y="466"><tspan class="w" style="animation-delay:.3s">Bu</tspan> <tspan class="w" style="animation-delay:.6s">fotoşəkildəki</tspan> <tspan class="w" style="animation-delay:.9s">adam</tspan></text>
-<text x="156" y="491"><tspan class="w" style="animation-delay:1.3s">tarixdən</tspan> <tspan class="w" style="animation-delay:1.6s">silinmişdi.</tspan></text></g></svg>`;
-const REEL = () => `<div class="reel" aria-label="FikirList videolarından kadrlar"><div class="screen">${REEL_SVG}
- <div class="slides">${VIDEOS.map(v => `<div class="slide" data-id="${esc(v[0])}" style="background-image:url('https://i.ytimg.com/vi/${encodeURIComponent(v[0])}/oar2.jpg'),url('https://i.ytimg.com/vi/${encodeURIComponent(v[0])}/hqdefault.jpg')"></div>`).join("")}</div>
- <div class="shade"></div>
- <div class="segs">${VIDEOS.map(() => `<i><b></b></i>`).join("")}</div>
- <svg class="rlogo" viewBox="0 0 755 192"><path d="${LOGO1}"/><path transform="translate(342 -206)" d="${LOGO2}"/></svg>
- <div class="side"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.2C1.4 8.4 3.6 5 7 5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8C19.5 16.4 12 21 12 21z"/></svg><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><svg viewBox="0 0 24 24"><path d="M3 11l18-8-6 18-3-7z"/></svg></div>
- <div class="cap" aria-live="off"></div>
-</div></div>`;
+const REEL = () => `<a class="reel" href="https://www.youtube.com/@fikirlistchannel/shorts" target="_blank" rel="noopener" aria-label="FikirList videolarına baxın"><div class="screen">
+ <div class="slides">${VIDEOS.map((v, k) => `<div class="slide${k === 0 ? " on" : ""}"><div class="cover"><span>${esc(v[1])}</span></div><div class="img"></div></div>`).join("")}</div>
+ <div class="flash"></div><div class="shade"></div>
+ <div class="rtop"><span>Reels</span><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="4"/><circle cx="12" cy="13" r="3.6"/><path d="M8.5 6l1.5-2.5h4L15.5 6"/></svg></div>
+ <div class="side">
+  <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.2C1.4 8.4 3.6 5 7 5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8C19.5 16.4 12 21 12 21z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 3C6.5 3 2.5 6.8 2.5 11.4c0 2.4 1.1 4.6 2.9 6.1L4.6 21l4-1.7c1 .3 2.2.5 3.4.5 5.5 0 9.5-3.8 9.5-8.4S17.5 3 12 3z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M2.5 11.5L21.5 3l-6.8 18.5-3.3-7.4z"/></svg>
+  <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+  <span class="disc"><svg fill="#fff" viewBox="0 0 414 398"><path d="${LOGO1}${LOGO2}"/></svg></span>
+ </div>
+ <div class="meta">
+  <div class="who"><span class="av2"><svg viewBox="0 0 414 398"><path d="${LOGO1}${LOGO2}"/></svg></span><b>fikirlist</b><span class="follow">İzlə</span></div>
+  <p class="cap"></p>
+  <div class="music"><svg viewBox="0 0 24 24"><path d="M9 18V6l11-2v12" stroke="#fff" stroke-width="2" fill="none"/><circle cx="6.5" cy="18" r="2.8"/><circle cx="17.5" cy="16" r="2.8"/></svg><span class="mq"><span>FikirList · Orijinal səs &nbsp;&nbsp;&nbsp; FikirList · Orijinal səs &nbsp;&nbsp;&nbsp;</span></span></div>
+ </div>
+</div></a>`;
 
 function bars(rows) {
   rows = rows.filter(r => num(r[1]) !== null && num(r[1]) > 0);
@@ -337,7 +405,7 @@ function render(D, demo) {
   const P = STATIC.platforms.map(p => ({ ...p,
     handle: D[p.id+"_handle"] || p.handle, url: safeUrl(D[p.id+"_url"]) || p.url,
     followers:num(D[p.id+"_followers"]), posts:num(D[p.id+"_posts"]), views30d:num(D[p.id+"_views30d"]),
-    avg:num(D[p.id+"_avgViews"]), med:num(D[p.id+"_medianViews"]), er:num(D[p.id+"_er"]), best:num(D[p.id+"_best"]) }));
+    avg:num(D[p.id+"_avgViews"]), med:num(D[p.id+"_medianViews"]), er:num(D[p.id+"_er"]), best:num(D[p.id+"_best"]), likes:num(D[p.id+"_likes"]) }));
   const sum = k => { const xs = P.map(p => p[k]).filter(x => x !== null); return xs.length ? xs.reduce((a,b) => a+b, 0) : null; };
   const ers = P.filter(p => p.er !== null && p.views30d);
   const er = ers.length ? ers.reduce((a,p) => a + p.er*p.views30d, 0) / ers.reduce((a,p) => a + p.views30d, 0) : null;
@@ -346,10 +414,19 @@ function render(D, demo) {
   const ages = ["13-17","18-24","25-34","35-44","45-54","55+"].map(a => [a.replace("-", "–"), D["aud_age_"+a]]);
   const cities = [1,2,3,4,5].map(i => [D["aud_city_"+i+"_label"], D["aud_city_"+i+"_value"]]).filter(r => r[0]);
   const f = num(D.aud_gender_female), m = num(D.aud_gender_male);
+  const hasAud = ages.some(x => num(x[1])) || cities.length > 0 || (f !== null && m !== null);
   const top = [1,2,3,4,5].map(i => ({ t:D["top_"+i+"_title"], v:D["top_"+i+"_views"], u:safeUrl(D["top_"+i+"_url"]), p:D["top_"+i+"_platform"] })).filter(x => x.t);
   const email = String(D.email||"").trim() || STATIC.email, phone = String(D.phone||"").trim();
   const slogan = esc(STATIC.slogan);
-  const figs = [[sum("followers"), fmt, "ümumi auditoriya"], [sum("views30d"), fmt, "baxış, son 30 gün"], [er, pct, "orta engagement"], [sum("posts"), fmt, "dərc olunmuş video"]];
+  const names = k => P.filter(p => p[k] !== null).map(p => p.name);
+  const vN = names("views30d"), eN = names("er");
+  const best = P.reduce((m, p) => p.best !== null && (m === null || p.best > m.best) ? p : m, null);
+  const figs = [
+    [sum("followers"), fmt, "ümumi auditoriya, 3 platforma"],
+    [best ? best.best : null, fmt, best ? "rekord baxış, bir video (" + best.name + ")" : "rekord baxış, bir video"],
+    [sum("views30d"), fmt, vN.length === 3 ? "baxış, son 30 gün" : vN.join(" və ") + " baxışı, son 30 gün"],
+    [er, pct, eN.length === 3 ? "orta engagement" : "engagement (" + eN.join(", ") + ")"]
+  ].filter(x => x[0] !== null);
 
   document.getElementById("app").innerHTML = `
 ${demo ? `<div class="notice">Nümunə rəqəmlər göstərilir. Real rəqəmlər cədvəl qoşulandan sonra görünəcək.</div>` : ""}
@@ -365,33 +442,32 @@ ${demo ? `<div class="notice">Nümunə rəqəmlər göstərilir. Real rəqəmlə
   <div class="cta"><a class="btn pri" href="#contact">Əməkdaşlıq təklif edin</a><a class="btn" href="#platforms">Rəqəmlərə baxın</a></div>
  </div>${REEL()}</div>
  <div class="figs">${figs.map(x => `<div class="fig"><b data-n="${x[0] ?? ""}" data-k="${x[1] === pct ? "p" : "n"}">${x[1](x[0])}</b><span>${x[2]}</span></div>`).join("")}</div>
- ${upd ? `<div class="upd"><span class="live"></span>Rəqəmlər hər gün avtomatik yenilənir · son yenilənmə ${esc(upd)}</div>` : ""}
 </div></header>
 ${VIDEOS.length ? `<div class="ticker" aria-hidden="true"><div>${[0,1].map(() => VIDEOS.map(v => `<span>${esc(v[1])}</span>`).join("")).join("")}</div></div>` : ""}
 
 <section class="sec" id="platforms" style="border-top:0"><div class="wrap">
- <div class="head"><h2>Üç platforma,<br>bir auditoriya</h2><p>Instagram, TikTok və YouTube-da eyni hekayə hər platformanın dilinə uyğunlaşdırılır. Rəqəmlər son 30 gün üzrədir.</p></div>
+ <div class="head"><h2>Üç platforma,<br>bir auditoriya</h2><p class="livenote"><span class="live"></span>Canlı statistika${upd ? " · " + esc(upd) : ""}</p></div>
  ${total ? `<div class="share"><div class="share-bar">${P.filter(p => p.followers).map(p => `<i style="flex:${p.followers};background:${p.c}"></i>`).join("")}</div>
   <div class="legend">${P.filter(p => p.followers).map(p => `<span><span class="dot" style="background:${p.c}"></span>${esc(p.name)}<b>${pct(p.followers/total*100)}</b></span>`).join("")}</div></div>` : ""}
  <div class="plats">${P.map(p => `<article class="plat" style="--c:${p.c}">
   <div class="ph"><div class="pn">${ICON[p.id]}${esc(p.name)}</div><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.handle)}</a></div>
   <div class="pbig">${fmt(p.followers)}</div><div class="plab">${p.unit}</div>
-  <div class="mets">
-   <div class="met"><b>${fmt(p.views30d)}</b><span>baxış, 30 gün</span></div>
-   <div class="met"><b>${pct(p.er)}</b><span>engagement</span></div>
-   <div class="met"><b>${fmt(p.avg)}</b><span>orta baxış</span></div>
-   <div class="met"><b>${fmt(p.best)}</b><span>ən yaxşı video</span></div>
-  </div></article>`).join("")}</div>
+  <div class="mets">${[["views30d","baxış, 30 gün",fmt],["best","ən yaxşı video",fmt],["er","engagement",pct],["likes","ümumi bəyənmə",fmt],["avg","orta baxış",fmt],["posts","video",fmt]].filter(x => p[x[0]] !== null).slice(0, 4).map(x => `<div class="met"><b>${x[2](p[x[0]])}</b><span>${x[1]}</span></div>`).join("")}</div></article>`).join("")}</div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="why"><div class="wrap">
+ <div class="why-head"><h2>Bizi fərqləndirən nədir?</h2><p>İzləyicilər FikirList-i bir hiss üçün izləyir: “Bunu necə bilməmişəm?” Hər video bu anı yaratmaq üçün qurulur.</p></div>
+ <div class="why-grid">${STATIC.why.map(w => `<div class="wcard"><h3>${esc(w[0])}</h3><p>${esc(w[1])}</p></div>`).join("")}</div>
+ ${P.some(p => p.best) ? `<div class="proof">${P.filter(p => p.best).sort((x, y) => y.best - x.best).map(p => `<div><b>${fmt(p.best)}</b><span>${esc(p.name)}-da bir videonun baxışı</span></div>`).join("")}<div><b>${fmt(total)}</b><span>izləyici üç platformada</span></div></div>` : ""}
+</div></section>
+${hasAud ? `<section class="sec"><div class="wrap">
  <div class="head"><h2>Kimlər izləyir</h2><p>${(() => { const a = ages.filter(x => num(x[1])).sort((x,y) => num(y[1]) - num(x[1])); return a.length >= 2 ? `Auditoriyanın ${pct(num(a[0][1]) + num(a[1][1]))}-i ${esc(a[0][0])} və ${esc(a[1][0])} yaş qruplarındadır.` : ""; })()}${D.aud_label ? ` Mənbə: ${esc(D.aud_label)}.` : ""}</p></div>
  <div class="aud">
   <div class="card"><h3>Yaş</h3>${bars(ages)}</div>
   <div class="card"><h3>Cins</h3>${f !== null && m !== null ? `<div class="gbig"><div><b>${pct(f)}</b><span>qadın</span></div><div><b>${pct(m)}</b><span>kişi</span></div></div><div class="gbar"><i style="flex:${f};background:var(--y)"></i><i style="flex:${m};background:rgba(244,241,234,.55)"></i></div>` : `<p class="empty">Məlumat tezliklə əlavə olunacaq.</p>`}</div>
   <div class="card"><h3>Şəhərlər</h3>${bars(cities)}</div>
  </div>
-</div></section>
+</div></section>` : ""}
 
 
 <section class="sec"><div class="wrap">
@@ -399,10 +475,15 @@ ${VIDEOS.length ? `<div class="ticker" aria-hidden="true"><div>${[0,1].map(() =>
  <div class="sers">${STATIC.series.map(s => `<div class="ser">${ICON[s[2]]}<h3>${esc(s[0])}${s[3] ? `<span class="tag">${esc(s[3])}</span>` : ""}</h3><p>${esc(s[1])}</p></div>`).join("")}</div>
 </div></section>
 
-<section class="sec"><div class="wrap">
- <div class="head"><h2>Əməkdaşlıq formatları</h2><p>Qiymətlər layihənin həcminə görə fərdi müəyyən olunur.</p></div>
- <div class="fmts">${STATIC.formats.map(x => `<div class="fmt"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join("")}</div>
- <p class="principle">Brend hekayəyə yalnız mövzuya təbii uyğun gəldikdə daxil edilir. Faktları dəyişən və ya auditoriyanı yanıldan inteqrasiyalar qəbul edilmir. Bu, izləyicinin FikirList-ə olan etibarını qoruyur və tərəfdaşın mesajını daha inandırıcı edir.</p>
+<section class="sec offer-sec" id="offer"><div class="wrap">
+ <div class="offer-top">
+  <h2>Brendinizin hekayəsini<br>birlikdə danışaq</h2>
+  <div><p>Reklam yox, hekayə. Brendiniz izləyicinin sona qədər izlədiyi videonun təbii hissəsinə çevrilir. Qiymət layihənin həcminə görə fərdi müəyyən olunur.</p>
+  <a class="btn pri" href="mailto:${esc(email)}?subject=${encodeURIComponent("Əməkdaşlıq təklifi — FikirList")}">Təklif alın</a></div>
+ </div>
+ <div class="offers">${STATIC.formats.map(x => `<article class="offer${x[3] ? " feat" : ""}">${x[3] ? `<span class="flag">${esc(x[3])}</span>` : ""}<span class="oic">${ICON[x[4]]}</span><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p><ul>${x[2].map(li => `<li>${esc(li)}</li>`).join("")}</ul></article>`).join("")}</div>
+ <div class="steps">${STATIC.steps.map((st, k) => `<div class="step"><i>${k + 1}</i><b>${esc(st[0])}</b><span>${esc(st[1])}</span></div>`).join("")}</div>
+ <p class="principle">Brend hekayəyə yalnız mövzuya təbii uyğun gəldikdə daxil edilir. Faktları dəyişən və ya auditoriyanı yanıldan inteqrasiyalar qəbul edilmir. Bu, izləyicinin etibarını qoruyur və tərəfdaşın mesajını daha inandırıcı edir.</p>
 </div></section>
 
 <section class="sec"><div class="wrap">
@@ -414,7 +495,7 @@ ${VIDEOS.length ? `<div class="ticker" aria-hidden="true"><div>${[0,1].map(() =>
  <div class="close">
   ${STACKED}
   <div class="big">Hər şeydən<br>bir fikir<em>.</em></div>
-  <p>Brendinizin hekayəsini birlikdə danışaq. Reklam və tərəfdaşlıq təklifləri üçün sizə rahat olan yolla yazın.</p>
+  <p>Təklifiniz, sualınız və ya ideyanız var? Sizə rahat olan yolla yazın, birlikdə ən uyğun formatı tapaq.</p>
   <div class="contact">
    <a class="cbox" href="mailto:${esc(email)}?subject=${encodeURIComponent("Əməkdaşlıq təklifi — FikirList")}"><span class="cic">${ICON.mail}</span><span><small>E-poçt ilə yazın</small><b>${esc(email)}</b></span></a>
    <a class="cbox" href="${esc(STATIC.igDM)}" target="_blank" rel="noopener"><span class="cic ig">${ICON.ig}</span><span><small>Instagram-da birbaşa mesaj</small><b>@fikirlist</b></span></a>
@@ -435,26 +516,29 @@ ${VIDEOS.length ? `<div class="ticker" aria-hidden="true"><div>${[0,1].map(() =>
 
 function startReel() {
   const reel = document.querySelector(".reel"); if (!reel || !VIDEOS.length) return;
-  const slides = [...reel.querySelectorAll(".slide")], segs = [...reel.querySelectorAll(".segs i")], cap = reel.querySelector(".cap");
-  clearInterval(window.__reelT); const ok = new Array(slides.length).fill(false); let started = false, i = -1, timer = null;
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches, DUR = 5200;
-  const show = n => {
-    slides.forEach((s, k) => s.classList.toggle("on", k === n));
-    segs.forEach((g, k) => { g.classList.toggle("done", k < n); g.classList.remove("on"); });
-    void segs[n].offsetWidth; segs[n].style.setProperty("--dur", DUR + "ms"); segs[n].classList.add("on");
-    cap.textContent = "";
-    String(VIDEOS[n][1]).split(/\s+/).forEach((w, k) => { const sp = document.createElement("span"); sp.textContent = w; sp.style.animationDelay = (0.35 + k * 0.12) + "s"; cap.appendChild(sp); cap.appendChild(document.createTextNode(" ")); });
-  };
-  const next = () => { let n = i; for (let t = 0; t < slides.length; t++) { n = (n + 1) % slides.length; if (ok[n]) break; } if (!ok[n]) return; i = n; show(i); };
-  const begin = () => { if (started) return; started = true; reel.classList.add("has-slides"); next(); if (!reduce) window.__reelT = timer = setInterval(next, DUR); };
+  const slides = [...reel.querySelectorAll(".slide")], cap = reel.querySelector(".cap"), flash = reel.querySelector(".flash");
+  clearInterval(window.__reelT);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches, DUR = 4200, FX = ["swipe", "zoom", "whip", "flash", "spin"];
+  let i = 0, f = 0;
+  const setCap = n => { cap.textContent = VIDEOS[n][1]; cap.classList.remove("go"); void cap.offsetWidth; cap.classList.add("go");
+    reel.href = "https://www.youtube.com/shorts/" + encodeURIComponent(VIDEOS[n][0]); };
   VIDEOS.forEach((v, k) => {
-    const im = new Image();
-    im.onload = () => { if (im.naturalWidth > 200) { ok[k] = true; slides[k].style.backgroundImage = `url('${im.src}')`; begin(); } else tryHq(); };
-    const tryHq = () => { const h = new Image(); h.onload = () => { if (h.naturalWidth > 200) { ok[k] = true; slides[k].style.backgroundImage = `url('${h.src}')`; begin(); } }; h.src = "https://i.ytimg.com/vi/" + encodeURIComponent(v[0]) + "/hqdefault.jpg"; };
-    im.onerror = tryHq;
+    const el = slides[k].querySelector(".img"), im = new Image();
+    im.onload = () => { if (im.naturalWidth > 200) { el.style.backgroundImage = `url('${im.src}')`; el.classList.add("ok"); } };
     im.src = "https://i.ytimg.com/vi/" + encodeURIComponent(v[0]) + "/oar2.jpg";
   });
-  document.addEventListener("visibilitychange", () => { if (document.hidden) { clearInterval(timer); timer = null; } else if (started && !reduce && !timer) window.__reelT = timer = setInterval(next, DUR); });
+  setCap(0);
+  const go = () => {
+    const n = (i + 1) % slides.length, fx = reduce ? "flash" : FX[f++ % FX.length], a = slides[i], b = slides[n];
+    a.className = "slide out-" + fx; b.className = "slide on in-" + fx;
+    if (fx === "flash" && !reduce) { flash.classList.remove("go"); void flash.offsetWidth; flash.classList.add("go"); }
+    setCap(n);
+    setTimeout(() => { if (!a.classList.contains("on")) a.className = "slide"; }, 750);
+    i = n;
+  };
+  window.__reelT = setInterval(go, DUR);
+  if (!window.__reelVis) { window.__reelVis = 1; document.addEventListener("visibilitychange", () => { clearInterval(window.__reelT); if (!document.hidden && window.__reelGo) window.__reelT = setInterval(window.__reelGo, DUR); }); }
+  window.__reelGo = go;
 }
 
 function countUp() {

@@ -122,11 +122,12 @@ a.reel{display:block;text-decoration:none;color:#fff}
 .ticker span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--y)}
 .ticker:hover div{animation-play-state:paused}
 @keyframes tk{to{transform:translateX(-50%)}}
-.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);margin-top:clamp(40px,6vw,72px);position:relative;z-index:1}
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);margin-top:clamp(40px,6vw,72px);position:relative;z-index:1}
 .fig{padding:26px 22px 24px;border-left:1px solid var(--line)}
 .fig:first-child{border-left:0;padding-left:0}
-.fig b{display:block;font:600 clamp(36px,4.6vw,60px)/1 "Inter Tight",sans-serif;letter-spacing:-.045em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fig b{display:block;font:600 clamp(48px,7vw,92px)/1 "Inter Tight",sans-serif;letter-spacing:-.045em;white-space:nowrap;font-variant-numeric:tabular-nums}
 .fig span{display:block;margin-top:10px;font-size:14px;color:var(--soft)}
+.fig small{display:block;margin-top:6px;font-size:13px;color:var(--mute)}
 .fig span::before{content:"";display:inline-block;width:14px;height:2px;margin-right:8px;background:var(--y);vertical-align:4px}
 .upd{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;color:var(--soft);position:relative;z-index:1}
 .live{width:7px;height:7px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.15)}
@@ -149,6 +150,31 @@ a.reel{display:block;text-decoration:none;color:#fff}
 .ph a:hover{color:var(--ink)}
 .pbig{font:600 clamp(40px,4.4vw,54px)/1 "Inter Tight",sans-serif;letter-spacing:-.045em;margin:28px 0 4px;white-space:nowrap}
 .plab{font-size:14px;color:var(--soft)}
+.pn span{display:flex;flex-direction:column;line-height:1.2}
+.pn small{font:400 13px Inter,sans-serif;color:var(--soft);margin-top:2px}
+.go{display:inline-flex;align-items:center;gap:4px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);font-size:13px;font-weight:600;text-decoration:none;color:var(--ink);white-space:nowrap}
+.go:hover{border-color:var(--y);color:var(--y)}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.5em,1fr));gap:12px;margin-top:18px}
+.kv span{display:block;font-size:12.5px;color:var(--soft)}
+.kv b{display:block;font:600 22px "Inter Tight",sans-serif;letter-spacing:-.02em;margin-top:3px;white-space:nowrap}
+.blk{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.blk h4{margin:0;font:600 13px Inter,sans-serif;color:var(--y)}
+.blk .kv{margin-top:10px}
+.na{margin:10px 0 0;font-size:13.5px;color:var(--mute)}
+.gen{margin-top:12px}
+.gen .gbar{display:flex;height:8px;border-radius:4px;overflow:hidden;gap:2px}
+.gen .gbar i:first-child{background:var(--y)}
+.gen .gbar i:last-child{background:rgba(244,241,234,.5)}
+.glab{display:flex;justify-content:space-between;font-size:13px;color:var(--soft);margin-top:6px}
+.ages{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-top:16px;align-items:end}
+.age{display:grid;justify-items:center;gap:4px;font-size:11.5px;color:var(--soft)}
+.age i{display:flex;align-items:flex-end;width:100%;height:58px;background:rgba(244,241,234,.05);border-radius:5px;overflow:hidden}
+.age i b{display:block;width:100%;background:linear-gradient(180deg,var(--y),rgba(255,210,31,.55));border-radius:5px}
+.age em{font-style:normal;color:var(--ink);font-weight:600}
+.geo{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px;font-size:14px}
+.geo li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:5px}
+.geo em{font-style:normal;font-weight:600}
+.note2{margin-top:22px;font-size:13px;color:var(--mute);max-width:80ch}
 .mets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
 .met{background:var(--s1);padding:14px}
 .met b{display:block;font:600 20px "Inter Tight",sans-serif;letter-spacing:-.02em;white-space:nowrap}
@@ -180,7 +206,7 @@ a.reel{display:block;text-decoration:none;color:#fff}
 .ser{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:24px;padding:28px 28px 30px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 20px;align-items:start;transition:border-color .25s,transform .25s}
 .ser:hover{border-color:var(--line2);transform:translateY(-2px)}
 .ser:first-child{background:linear-gradient(150deg,rgba(255,210,31,.11),var(--s1) 60%);border-color:rgba(255,210,31,.28)}
-.ser svg{grid-row:span 3;width:30px;height:30px;color:var(--y);padding:13px;border-radius:16px;background:rgba(255,210,31,.08);border:1px solid rgba(255,210,31,.18);box-sizing:content-box}
+.ser svg{grid-row:span 3;width:30px;height:30px;color:#111;padding:13px;border-radius:16px;background:linear-gradient(145deg,#ffe36b,var(--y) 55%,#e9b800);box-shadow:0 10px 24px -10px rgba(255,210,31,.6),inset 0 1px 0 rgba(255,255,255,.45);box-sizing:content-box}
 .ser h3{font-size:23px;letter-spacing:-.03em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .ser p{color:var(--soft);font-size:16px;margin:8px 0 0;line-height:1.65;max-width:52ch}
 .ser .tag{font:600 12px Inter,sans-serif;color:#111;background:var(--y);border-radius:999px;padding:3px 10px;letter-spacing:0}
@@ -280,13 +306,13 @@ const STATIC = {
   ],
   series: [
     ["ESKİZ","Hamının tanıdığı, amma hekayəsini az adamın bildiyi insanlar. Bir fotodan, bir xatirədən və ya bir-birinə zidd iki hekayədən başlayıb onların portretini çəkirik. Arxiv sənədlərinə və etibarlı mənbələrə söykənərək bir ömrü bir dəqiqəlik kino dilində danışırıq.","eskiz","Ən çox izlənən"],
-    ["Biz Kimik?","Eyni sözü fərqli deyir, eyni bayramı fərqli keçiririk. Azərbaycanın xalqları və icmaları öz dili, adətləri və gündəlik həyatı ilə. Məqsədimiz fərqləri qabartmaq yox, bir-birimizi daha yaxından tanımaqdır. Animasiya dili isə mövzunu hər yaşdan izləyici üçün səmimi edir. Talışlar və yerazlarla başladıq.","globe","Animasiya"],
+    ["Biz Kimik?","Eyni sözü fərqli deyir, eyni bayramı fərqli keçiririk. Azərbaycanın müxtəlif bölgələrində fərqli dillər danışılır, adətlər yaşadılır, bayramlar qeyd olunur. Bəs bir-birimizi nə qədər tanıyırıq? Bu seriyada ölkəmizin xalqlarını və icmalarını onların öz hekayələri, dili və gündəlik həyatı ilə tanıdırıq. Animasiya dili isə mövzunu hər yaşdan izləyici üçün səmimi və əyləncəli edir.","globe","Animasiya"],
     ["Psixologiya və həyat fəlsəfəsi","Kintsugidən dolce far nienteyə qədər, başqa mədəniyyətlərin daha yaxşı yaşamaq haqqında tapdığı sadə həqiqətlər, bugünkü həyatımızın dilində. Hər videoda bir anlayışın arxasındakı psixologiyanı açırıq ki, izləyici öz gündəliyinə bir az fərqli baxsın.","kintsugi"],
     ["Elm, texnologiya və trendlər","Hamının danışdığı mövzunun necə başladığını və sabahımıza necə təsir edəcəyini qısa və aydın danışırıq. Mürəkkəb mövzuları sadələşdirmədən, hər kəsin anlayacağı dildə izah edir, trendin səs-küyündən kənarda onun əsl mənasını göstəririk.","spark"]
   ],
   formats: [
     ["Hekayəyə inteqrasiya","Brend mövzu ilə bağlı olduqda hekayənin təbii hissəsinə çevrilir.",["Videoda 5–10 saniyəlik təbii yerləşdirmə","Təsvirdə və pinlənmiş şərhdə link","Instagram, TikTok və YouTube-da yayım"],"","insert"],
-    ["Xüsusi epizod","Brendinizin tarixi, istehsalı və ya missiyası haqqında ayrıca qısa sənədli film.",["Araşdırma və ssenari bizdən","Arxiv və çəkiliş materialları ilə kinematik montaj","Yayımdan sonra nəticə hesabatı"],"Tövsiyə edirik","film"],
+    ["Xüsusi epizod","Brendinizin tarixi, istehsalı və ya missiyası haqqında ayrıca qısa sənədli film.",["Araşdırma və ssenari bizdən","Arxiv və çəkiliş materialları ilə kinematik montaj","Yayımdan sonra nəticə hesabatı"],"","film"],
     ["Silsilə tərəfdaşlığı","Bir silsilənin bir neçə epizod boyunca dəstəklənməsi.",["Hər epizodda brend qeydi","Silsilə boyu ardıcıl görünürlük","Auditoriya ilə uzunmüddətli əlaqə"],"","layers"],
     ["Çarpaz yayım","Bir video eyni vaxtda üç platformada yayımlanır.",["Instagram Reels, TikTok, YouTube Shorts","Stories və pinlənmiş şərh","Bir kontent, üç auditoriya"],"","share"]
   ],
@@ -311,9 +337,11 @@ const STATIC = {
 /* Son məlum real rəqəmlər — cədvələ qoşulmaq mümkün olmayanda göstərilir */
 const SNAPSHOT = {
   updatedAt:"2026-11-26", email:"fikirlistmedia@gmail.com",
-  yt_followers:2710, yt_posts:49, yt_views30d:463094, yt_avgViews:51455, yt_medianViews:1589, yt_er:5.6, yt_best:449007,
-  tt_followers:3751, tt_posts:26, tt_best:949800,
-  ig_followers:2453, ig_posts:26
+  yt_followers:2750, yt_totalViews:520039, yt_posts:30, yt_views30d:477569, yt_new30d:1500, yt_er:5.5, yt_avgViews:47757,
+  yt_gender_female:33.4, yt_gender_male:66.5, "yt_age_13-17":2.2, "yt_age_18-24":6.6, "yt_age_25-34":27.7, "yt_age_35-44":27.8, "yt_age_45-54":14.4, "yt_age_55+":21.3,
+  yt_geo_1_label:"Azərbaycan", yt_geo_1_value:64.4, yt_geo_2_label:"Rusiya", yt_geo_2_value:8.3, yt_geo_3_label:"Almaniya", yt_geo_3_value:1.2,
+  tt_followers:3767, tt_totalViews:1064233, tt_posts:27, tt_er:8.6, tt_likes:91700, tt_avgViews:39416,
+  ig_followers:2464, ig_totalViews:219078, ig_posts:27, ig_er:4.8, ig_avgViews:9128
 };
 
 /* Nümunə məlumat — yalnız SHEET_ID boş olanda göstərilir */
@@ -405,7 +433,10 @@ function render(D, demo) {
   const P = STATIC.platforms.map(p => ({ ...p,
     handle: D[p.id+"_handle"] || p.handle, url: safeUrl(D[p.id+"_url"]) || p.url,
     followers:num(D[p.id+"_followers"]), posts:num(D[p.id+"_posts"]), views30d:num(D[p.id+"_views30d"]),
-    avg:num(D[p.id+"_avgViews"]), med:num(D[p.id+"_medianViews"]), er:num(D[p.id+"_er"]), best:num(D[p.id+"_best"]), likes:num(D[p.id+"_likes"]) }));
+    avg:num(D[p.id+"_avgViews"]), med:num(D[p.id+"_medianViews"]), er:num(D[p.id+"_er"]), best:num(D[p.id+"_best"]), likes:num(D[p.id+"_likes"]), likes30d:num(D[p.id+"_likes30d"]), totalViews:num(D[p.id+"_totalViews"]), new30d:num(D[p.id+"_new30d"]),
+    gf:num(D[p.id+"_gender_female"]), gm:num(D[p.id+"_gender_male"]),
+    ages:["13-17","18-24","25-34","35-44","45-54","55+"].map(a => [a.replace("-", "–"), num(D[p.id+"_age_"+a])]).filter(x => x[1]),
+    geo:[1,2,3].map(i => [D[p.id+"_geo_"+i+"_label"], num(D[p.id+"_geo_"+i+"_value"])]).filter(x => x[0] && x[1]) }));
   const sum = k => { const xs = P.map(p => p[k]).filter(x => x !== null); return xs.length ? xs.reduce((a,b) => a+b, 0) : null; };
   const ers = P.filter(p => p.er !== null && p.views30d);
   const er = ers.length ? ers.reduce((a,p) => a + p.er*p.views30d, 0) / ers.reduce((a,p) => a + p.views30d, 0) : null;
@@ -419,20 +450,18 @@ function render(D, demo) {
   const email = String(D.email||"").trim() || STATIC.email, phone = String(D.phone||"").trim();
   const slogan = esc(STATIC.slogan);
   const names = k => P.filter(p => p[k] !== null).map(p => p.name);
-  const vN = names("views30d"), eN = names("er");
-  const best = P.reduce((m, p) => p.best !== null && (m === null || p.best > m.best) ? p : m, null);
+  const vN = names("totalViews");
+  const brk = k => P.filter(p => p[k] !== null).map(p => esc(p.name) + " " + fmt(p[k])).join(" · ");
   const figs = [
-    [sum("followers"), fmt, "ümumi auditoriya, 3 platforma"],
-    [best ? best.best : null, fmt, best ? "rekord baxış, bir video (" + best.name + ")" : "rekord baxış, bir video"],
-    [sum("views30d"), fmt, vN.length === 3 ? "baxış, son 30 gün" : vN.join(" və ") + " baxışı, son 30 gün"],
-    [er, pct, eN.length === 3 ? "orta engagement" : "engagement (" + eN.join(", ") + ")"]
+    [sum("followers"), "ümumi izləyici", brk("followers")],
+    [sum("totalViews"), vN.length === 3 ? "ümumi izlənmə, bütün platformalar" : "ümumi izlənmə", brk("totalViews")]
   ].filter(x => x[0] !== null);
 
   document.getElementById("app").innerHTML = `
 ${demo ? `<div class="notice">Nümunə rəqəmlər göstərilir. Real rəqəmlər cədvəl qoşulandan sonra görünəcək.</div>` : ""}
 <nav><div class="wrap">
  <a class="brand" href="#top">${WORDMARK}<span>${slogan}</span></a>
- <div class="acts"><button class="btn" id="pdf" type="button">PDF yüklə</button><a class="btn pri" href="#contact">Əməkdaşlıq</a></div>
+ <div class="acts"><button class="btn" id="pdf" type="button">PDF yüklə</button><a class="btn pri" href="#contact">Əlaqə</a></div>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
@@ -441,33 +470,30 @@ ${demo ? `<div class="notice">Nümunə rəqəmlər göstərilir. Real rəqəmlə
   <p class="lede">${esc(D.bio || STATIC.bio)}</p>
   <div class="cta"><a class="btn pri" href="#contact">Əməkdaşlıq təklif edin</a><a class="btn" href="#platforms">Rəqəmlərə baxın</a></div>
  </div>${REEL()}</div>
- <div class="figs">${figs.map(x => `<div class="fig"><b data-n="${x[0] ?? ""}" data-k="${x[1] === pct ? "p" : "n"}">${x[1](x[0])}</b><span>${x[2]}</span></div>`).join("")}</div>
+ <div class="figs">${figs.map(x => `<div class="fig"><b data-n="${x[0]}" data-k="n">${fmt(x[0])}</b><span>${x[1]}</span><small>${x[2]}</small></div>`).join("")}</div>
 </div></header>
 ${VIDEOS.length ? `<div class="ticker" aria-hidden="true"><div>${[0,1].map(() => VIDEOS.map(v => `<span>${esc(v[1])}</span>`).join("")).join("")}</div></div>` : ""}
 
 <section class="sec" id="platforms" style="border-top:0"><div class="wrap">
- <div class="head"><h2>Üç platforma,<br>bir auditoriya</h2><p class="livenote"><span class="live"></span>Canlı statistika${upd ? " · " + esc(upd) : ""}</p></div>
- ${total ? `<div class="share"><div class="share-bar">${P.filter(p => p.followers).map(p => `<i style="flex:${p.followers};background:${p.c}"></i>`).join("")}</div>
-  <div class="legend">${P.filter(p => p.followers).map(p => `<span><span class="dot" style="background:${p.c}"></span>${esc(p.name)}<b>${pct(p.followers/total*100)}</b></span>`).join("")}</div></div>` : ""}
- <div class="plats">${P.map(p => `<article class="plat" style="--c:${p.c}">
-  <div class="ph"><div class="pn">${ICON[p.id]}${esc(p.name)}</div><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.handle)}</a></div>
-  <div class="pbig">${fmt(p.followers)}</div><div class="plab">${p.unit}</div>
-  <div class="mets">${[["views30d","baxış, 30 gün",fmt],["best","ən yaxşı video",fmt],["er","engagement",pct],["likes","ümumi bəyənmə",fmt],["avg","orta baxış",fmt],["posts","video",fmt]].filter(x => p[x[0]] !== null).slice(0, 4).map(x => `<div class="met"><b>${x[2](p[x[0]])}</b><span>${x[1]}</span></div>`).join("")}</div></article>`).join("")}</div>
+ <div class="head"><h2>Platformalar üzrə</h2><p class="livenote"><span class="live"></span>Canlı statistika${upd ? " · " + esc(upd) : ""}</p></div>
+ <div class="plats">${P.map(p => {
+  const l30 = [["views30d","baxış"],["new30d","yeni izləyici"],["likes30d","bəyənmə"]].filter(x => p[x[0]] !== null);
+  const amax = Math.max(1, ...p.ages.map(a => a[1]));
+  const hasDemo = p.ages.length || p.geo.length || (p.gf !== null && p.gm !== null);
+  return `<article class="plat" style="--c:${p.c}">
+  <div class="ph"><div class="pn">${ICON[p.id]}<span>${esc(p.name)}<small>${esc(p.handle)}</small></span></div><a class="go" href="${esc(p.url)}" target="_blank" rel="noopener">Profilə keç <span aria-hidden="true">↗</span></a></div>
+  <div class="pbig">${p.followers === null ? "—" : String(Math.round(p.followers)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u2009")}</div><div class="plab">${p.unit}</div>
+  <div class="kv"><div><span>Engagement rate</span><b>${pct(p.er)}</b></div><div><span>Ümumi izlənmə</span><b>${fmt(p.totalViews)}</b></div>${p.avg !== null ? `<div><span>Orta baxış / video</span><b>${fmt(p.avg)}</b></div>` : ""}</div>
+  ${l30.length ? `<div class="blk"><h4>Son 30 gün</h4><div class="kv">${l30.map(x => `<div><span>${x[1]}</span><b>${x[0] === "new30d" ? "+" : ""}${fmt(p[x[0]])}</b></div>`).join("")}</div></div>` : ""}
+  ${hasDemo ? `<div class="blk"><h4>Auditoriya</h4>
+   ${p.gf !== null && p.gm !== null ? `<div class="gen"><div class="gbar"><i style="flex:${p.gf}"></i><i style="flex:${p.gm}"></i></div><div class="glab"><span>Qadın ${pct(p.gf)}</span><span>Kişi ${pct(p.gm)}</span></div></div>` : ""}
+   ${p.ages.length ? `<div class="ages">${p.ages.map(a => `<div class="age"><span>${esc(a[0])}</span><i><b style="height:${(a[1]/amax*100).toFixed(0)}%"></b></i><em>${Math.round(a[1])}%</em></div>`).join("")}</div>` : ""}
+   ${p.geo.length ? `<ul class="geo">${p.geo.map(g => `<li><span>${esc(g[0])}</span><em>${pct(g[1])}</em></li>`).join("")}</ul>` : ""}</div>` : ""}
+ </article>`; }).join("")}</div>
+ <p class="note2">Engagement rate: bəyənmə, şərh və digər reaksiyaların baxış sayına nisbəti. Rəqəmlər platformaların rəsmi statistikasından hər gün avtomatik yenilənir.</p>
 </div></section>
 
-<section class="why"><div class="wrap">
- <div class="why-head"><h2>Bizi fərqləndirən nədir?</h2><p>İzləyicilər FikirList-i bir hiss üçün izləyir: “Bunu necə bilməmişəm?” Hər video bu anı yaratmaq üçün qurulur.</p></div>
- <div class="why-grid">${STATIC.why.map(w => `<div class="wcard"><h3>${esc(w[0])}</h3><p>${esc(w[1])}</p></div>`).join("")}</div>
- ${P.some(p => p.best) ? `<div class="proof">${P.filter(p => p.best).sort((x, y) => y.best - x.best).map(p => `<div><b>${fmt(p.best)}</b><span>${esc(p.name)}-da bir videonun baxışı</span></div>`).join("")}<div><b>${fmt(total)}</b><span>izləyici üç platformada</span></div></div>` : ""}
-</div></section>
-${hasAud ? `<section class="sec"><div class="wrap">
- <div class="head"><h2>Kimlər izləyir</h2><p>${(() => { const a = ages.filter(x => num(x[1])).sort((x,y) => num(y[1]) - num(x[1])); return a.length >= 2 ? `Auditoriyanın ${pct(num(a[0][1]) + num(a[1][1]))}-i ${esc(a[0][0])} və ${esc(a[1][0])} yaş qruplarındadır.` : ""; })()}${D.aud_label ? ` Mənbə: ${esc(D.aud_label)}.` : ""}</p></div>
- <div class="aud">
-  <div class="card"><h3>Yaş</h3>${bars(ages)}</div>
-  <div class="card"><h3>Cins</h3>${f !== null && m !== null ? `<div class="gbig"><div><b>${pct(f)}</b><span>qadın</span></div><div><b>${pct(m)}</b><span>kişi</span></div></div><div class="gbar"><i style="flex:${f};background:var(--y)"></i><i style="flex:${m};background:rgba(244,241,234,.55)"></i></div>` : `<p class="empty">Məlumat tezliklə əlavə olunacaq.</p>`}</div>
-  <div class="card"><h3>Şəhərlər</h3>${bars(cities)}</div>
- </div>
-</div></section>` : ""}
+
 
 
 <section class="sec"><div class="wrap">
@@ -482,14 +508,10 @@ ${hasAud ? `<section class="sec"><div class="wrap">
   <a class="btn pri" href="mailto:${esc(email)}?subject=${encodeURIComponent("Əməkdaşlıq təklifi — FikirList")}">Təklif alın</a></div>
  </div>
  <div class="offers">${STATIC.formats.map(x => `<article class="offer${x[3] ? " feat" : ""}">${x[3] ? `<span class="flag">${esc(x[3])}</span>` : ""}<span class="oic">${ICON[x[4]]}</span><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p><ul>${x[2].map(li => `<li>${esc(li)}</li>`).join("")}</ul></article>`).join("")}</div>
- <div class="steps">${STATIC.steps.map((st, k) => `<div class="step"><i>${k + 1}</i><b>${esc(st[0])}</b><span>${esc(st[1])}</span></div>`).join("")}</div>
  <p class="principle">Brend hekayəyə yalnız mövzuya təbii uyğun gəldikdə daxil edilir. Faktları dəyişən və ya auditoriyanı yanıldan inteqrasiyalar qəbul edilmir. Bu, izləyicinin etibarını qoruyur və tərəfdaşın mesajını daha inandırıcı edir.</p>
 </div></section>
 
-<section class="sec"><div class="wrap">
- <div class="head"><h2>Komanda</h2></div>
- <div class="team">${STATIC.team.map(t => `<div class="card mem"><div class="av">${esc(t[0].trim()[0])}</div><div><h3>${esc(t[0])}</h3><p class="role">${esc(t[1])}</p><p>${esc(t[2])}</p></div></div>`).join("")}</div>
-</div></section>
+
 
 <footer id="contact"><div class="wrap">
  <div class="close">
